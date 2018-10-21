@@ -1,0 +1,28 @@
+﻿  Application.cpp
+F:\Visual Studio 2017\VC\Tools\MSVC\14.11.25503\include\limits(211): warning C4577: si se usa 'noexcept' sin ningún modo de control de excepciones especificado, la finalización de la excepción no está garantizada. Especifique /EHsc
+  log.cpp
+  Main.cpp
+  ModuleAudio.cpp
+  ModuleInput.cpp
+  ModulePhysics.cpp
+ModulePhysics.cpp(40): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+ModulePhysics.cpp(121): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+ModulePhysics.cpp(122): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+ModulePhysics.cpp(166): warning C4018: '<': no coinciden signed/unsigned
+ModulePhysics.cpp(385): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+ModulePhysics.cpp(386): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+ModulePhysics.cpp(392): warning C4244: 'return': conversión de 'float32' a 'int'; posible pérdida de datos
+F:\Visual Studio 2017\VC\Tools\MSVC\14.11.25503\include\cmath(113): warning C4577: si se usa 'noexcept' sin ningún modo de control de excepciones especificado, la finalización de la excepción no está garantizada. Especifique /EHsc
+  ModulePlayer.cpp
+  ModuleRender.cpp
+  ModuleSceneIntro.cpp
+ModuleSceneIntro.cpp(136): warning C4101: 'y': variable local sin referencia
+ModuleSceneIntro.cpp(136): warning C4101: 'x': variable local sin referencia
+F:\Visual Studio 2017\VC\Tools\MSVC\14.11.25503\include\limits(211): warning C4577: si se usa 'noexcept' sin ningún modo de control de excepciones especificado, la finalización de la excepción no está garantizada. Especifique /EHsc
+  ModuleTextures.cpp
+  ModuleWindow.cpp
+  Generando código
+  All 198 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Generación de código finalizada
+  SDL Game.vcxproj -> F:\UNI\2n\fisica\Pinball\Pinball\Release\2D Physics - class 4.exe
+  SDL Game.vcxproj -> F:\UNI\2n\fisica\Pinball\Pinball\Release\2D Physics - class 4.pdb (Full PDB)
