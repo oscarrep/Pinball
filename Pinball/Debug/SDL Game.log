@@ -1,0 +1,6 @@
+﻿  ModuleSceneIntro.cpp
+f:\uni\2n\fisica\pinball\pinball\modulesceneintro.cpp(141): warning C4101: 'y': variable local sin referencia
+f:\uni\2n\fisica\pinball\pinball\modulesceneintro.cpp(141): warning C4101: 'x': variable local sin referencia
+f:\visual studio 2017\vc\tools\msvc\14.11.25503\include\limits(211): warning C4577: si se usa 'noexcept' sin ningún modo de control de excepciones especificado, la finalización de la excepción no está garantizada. Especifique /EHsc
+  SDL Game.vcxproj -> F:\UNI\2n\fisica\Pinball\Pinball\Debug\2D Physics - class 4.exe
+  SDL Game.vcxproj -> F:\UNI\2n\fisica\Pinball\Pinball\Debug\2D Physics - class 4.pdb (Partial PDB)
