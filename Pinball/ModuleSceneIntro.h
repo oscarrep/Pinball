@@ -21,6 +21,7 @@ public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> ricks;
+	p2List<PhysBody*> triangles;
 
 	PhysBody* sensor;
 	bool sensed;
@@ -31,6 +32,7 @@ public:
 	SDL_Texture* background;
 	SDL_Texture* ball;
 	SDL_Texture* flippers;
+	SDL_Texture* piston;
 	SDL_Rect backgroundrect;
 	uint bonus_fx;
 };
