@@ -188,17 +188,17 @@ bool ModulePhysics::Start()
 		};
 		t_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), top_triangle, 8));
 
-		int hearth_barrier_left[4] = {
+		int heart_barrier_left[4] = {
 			301, 118,
 			300, 143
 		};
-		l_hearth.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), hearth_barrier_left, 4));
+		l_heart.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), heart_barrier_left, 4));
 
-		int hearth_barrier_right[4] = {
+		int heart_barrier_right[4] = {
 			346, 119,
 			345, 145
 		};
-		r_hearth.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), hearth_barrier_right, 4));
+		r_heart.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), heart_barrier_right, 4));
 
 		int flipper_base_left[16] = {
 			125, 632,
@@ -295,38 +295,38 @@ PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height)
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height, Module *listener)
-{
-	b2BodyDef body;
-	body.type = b2_staticBody;
-	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
-
-	b2Body* b = world->CreateBody(&body);
-
-	b2PolygonShape box;
-	box.SetAsBox(PIXEL_TO_METERS(width) * 0.5f, PIXEL_TO_METERS(height) * 0.5f);
-
-	b2FixtureDef fixture;
-	fixture.shape = &box;
-	fixture.density = 1.0f;
-	fixture.isSensor = true;
-
-	b->CreateFixture(&fixture);
-
-	PhysBody* pbody = new PhysBody();
-	pbody->body = b;
-	b->SetUserData(pbody);
-	pbody->width = width;
-	pbody->height = height;
-	pbody->listener = listener;
-
-	return pbody;
-}
+//PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height, Module *listener)
+//{
+//	b2BodyDef body;
+//	body.type = b2_staticBody;
+//	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+//
+//	b2Body* b = world->CreateBody(&body);
+//
+//	b2PolygonShape box;
+//	box.SetAsBox(PIXEL_TO_METERS(width) * 0.5f, PIXEL_TO_METERS(height) * 0.5f);
+//
+//	b2FixtureDef fixture;
+//	fixture.shape = &box;
+//	fixture.density = 1.0f;
+//	fixture.isSensor = true;
+//
+//	b->CreateFixture(&fixture);
+//
+//	PhysBody* pbody = new PhysBody();
+//	pbody->body = b;
+//	b->SetUserData(pbody);
+//	pbody->width = width;
+//	pbody->height = height;
+//	pbody->listener = listener;
+//
+//	return pbody;
+//}
 
 PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
 {
 	b2BodyDef body;
-	body.type = b2_dynamicBody;
+	body.type = b2_staticBody;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	b2Body* b = world->CreateBody(&body);

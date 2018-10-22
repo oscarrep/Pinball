@@ -57,8 +57,8 @@ public:
 	p2List<PhysBody*> l_triangle;
 	p2List<PhysBody*> r_triangle;
 	p2List<PhysBody*> t_triangle;
-	p2List<PhysBody*> l_hearth;
-	p2List<PhysBody*> r_hearth;
+	p2List<PhysBody*> l_heart;
+	p2List<PhysBody*> r_heart;
 	p2List<PhysBody*> l_flipper_base;
 	p2List<PhysBody*> r_flipper_base;
 
