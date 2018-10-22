@@ -29,6 +29,8 @@ public:
 	SDL_Texture* box;
 	SDL_Texture* rick;
 	SDL_Texture* background;
+	SDL_Texture* ball;
+	SDL_Texture* flippers;
 	SDL_Rect backgroundrect;
 	uint bonus_fx;
 };

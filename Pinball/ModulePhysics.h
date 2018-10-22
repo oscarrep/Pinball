@@ -50,6 +50,18 @@ public:
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
 
+	//pinball phisical contour
+	p2List<PhysBody*> out;
+	p2List<PhysBody*> r_inline;
+	p2List<PhysBody*> l_inline;
+	p2List<PhysBody*> l_triangle;
+	p2List<PhysBody*> r_triangle;
+	p2List<PhysBody*> t_triangle;
+	p2List<PhysBody*> l_hearth;
+	p2List<PhysBody*> r_hearth;
+	p2List<PhysBody*> l_flipper_base;
+	p2List<PhysBody*> r_flipper_base;
+
 private:
 
 	bool debug;
