@@ -49,6 +49,8 @@ public:
 
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
+	////void CreateLflipper(p2List<PhysBody*>* Lflipper);
+	////void CreateRflipper(p2List<PhysBody*>* Rflipper);
 
 	//pinball phisical contour
 	p2List<PhysBody*> out;
@@ -71,4 +73,8 @@ private:
 	// Mouse joint
 	b2MouseJoint* mouse_joint;
 	b2Body* body_clicked;
+
+	////b2RevoluteJoint* LflipperJoint;
+	////b2RevoluteJoint* RflipperJoint;
+
 };

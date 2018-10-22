@@ -31,10 +31,12 @@ bool ModulePhysics::Start()
 	world = new b2World(b2Vec2(GRAVITY_X, -GRAVITY_Y));
 	world->SetContactListener(this);
 
+	////App->scene_intro->Lflipper = new p2List<PhysBody*>;
+	////App->scene_intro->Rflipper = new p2List<PhysBody*>;
+
 	// needed to create joints like mouse joint
 	b2BodyDef bd;
 	ground = world->CreateBody(&bd);
-
 	// big static circle as "ground" in the middle of the screen
 	/*int x = SCREEN_WIDTH / 2;
 	int y = SCREEN_HEIGHT / 1.5f;
@@ -224,6 +226,9 @@ bool ModulePhysics::Start()
 		};
 		r_flipper_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), flipper_base_right, 16));
 
+		////CreateLflipper(App->scene_intro->Lflipper);
+		////CreateRflipper(App->scene_intro->Rflipper);
+
 	return true;
 }
 
@@ -356,6 +361,13 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
 
 	return pbody;
 }
+
+
+////void ModulePhysics::CreateLflipper(p2List<PhysBody*>* Lflipper)
+////{
+////	PhysBody* flipper = CreateRectangle(45, 800, 30, b2_dynamicBody);
+////	PhysBody* flipper2 = CreateRectangle(420, 800, 25, b2_dynamicBody);
+////}
 
 // 
 update_status ModulePhysics::PostUpdate()
