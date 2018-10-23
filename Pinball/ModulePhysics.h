@@ -46,7 +46,7 @@ public:
 	PhysBody* CreateRectangle(int x, int y, int width, int height);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, Module* listener);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
-	PhysBody* CreateFlipper();
+	PhysBody* CreateFlipper(int x, int y, int w, int h, bool right_side);
 	PhysBody* CreatePiston();
 
 	// b2ContactListener ---
@@ -59,13 +59,13 @@ public:
 	p2List<PhysBody*> out;
 	p2List<PhysBody*> r_inline;
 	p2List<PhysBody*> l_inline;
-	p2List<PhysBody*> l_triangle;
-	p2List<PhysBody*> r_triangle;
-	p2List<PhysBody*> t_triangle;
-	p2List<PhysBody*> l_heart;
-	p2List<PhysBody*> r_heart;
-	p2List<PhysBody*> l_flipper_base;
-	p2List<PhysBody*> r_flipper_base;
+	//p2List<PhysBody*> l_triangle;
+	//p2List<PhysBody*> r_triangle;
+	//p2List<PhysBody*> t_triangle;
+	//p2List<PhysBody*> l_heart;
+	//p2List<PhysBody*> r_heart;
+	//p2List<PhysBody*> l_flipper_base;
+	//p2List<PhysBody*> r_flipper_base;
 
 	b2World* world;
 
@@ -78,7 +78,7 @@ private:
 	b2MouseJoint* mouse_joint;
 	b2Body* body_clicked;
 
-	//b2RevoluteJoint* LflipperJoint;
+	b2RevoluteJoint* flipperJoint;
 	//b2RevoluteJoint* RflipperJoint;
 
 };

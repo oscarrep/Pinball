@@ -47,13 +47,13 @@ public:
 	p2List<PhysBody*> out;
 	p2List<PhysBody*> r_inline;
 	p2List<PhysBody*> l_inline;
-	p2List<PhysBody*> l_triangle;
-	p2List<PhysBody*> r_triangle;
-	p2List<PhysBody*> t_triangle;
-	p2List<PhysBody*> l_heart;
-	p2List<PhysBody*> r_heart;
-	p2List<PhysBody*> l_flipper_base;
-	p2List<PhysBody*> r_flipper_base;
+	//p2List<PhysBody*> l_triangle;
+	//p2List<PhysBody*> r_triangle;
+	//p2List<PhysBody*> t_triangle;
+	//p2List<PhysBody*> l_heart;
+	//p2List<PhysBody*> r_heart;
+	//p2List<PhysBody*> l_flipper_base;
+	//p2List<PhysBody*> r_flipper_base;
 
 	//Textures 
 	SDL_Texture* piston;
