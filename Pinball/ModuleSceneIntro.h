@@ -16,6 +16,8 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
+	void SpawnBall();
+	void PlayerDeath();
 	////void CreateFlipperJoint();
 
 public:
@@ -28,22 +30,51 @@ public:
 	//PhysBody* sensor;
 	bool sensed;
 	////b2RevoluteJoint* flipperJoint;
+
+
+	//elements
+	p2List<PhysBody*> balls;
+	p2List<PhysBody*>* Lflipper;
+	p2List<PhysBody*>* Rflipper;
 	PhysBody* bouncer1;
 	PhysBody* bouncer2;
 	PhysBody* bouncer3;
 	PhysBody* bouncer4;
 	PhysBody* bouncer5;
+	PhysBody* out_of_bounds = nullptr; //zone where player loses a live
 
+	//contour
+	p2List<PhysBody*> out;
+	p2List<PhysBody*> r_inline;
+	p2List<PhysBody*> l_inline;
+	p2List<PhysBody*> l_triangle;
+	p2List<PhysBody*> r_triangle;
+	p2List<PhysBody*> t_triangle;
+	p2List<PhysBody*> l_heart;
+	p2List<PhysBody*> r_heart;
+	p2List<PhysBody*> l_flipper_base;
+	p2List<PhysBody*> r_flipper_base;
 
+	//Textures 
+	SDL_Texture* piston;
+	SDL_Texture* background;
+	SDL_Texture* ball;
+	SDL_Texture* LflipperTexture;
+	SDL_Texture* RflipperTexture;
+	SDL_Texture* TopflipperTexture;
+	SDL_Rect backgroundrect;
+
+	//handout elements
 	SDL_Texture* circle;
 	SDL_Texture* box;
 	SDL_Texture* rick;
-	SDL_Texture* background;
-	SDL_Texture* ball;
-	SDL_Texture* flippers;
-	SDL_Texture* piston;
-	////SDL_Texture* LflipperTexture;
-	////SDL_Texture* RflipperTexture;
-	SDL_Rect backgroundrect;
+	//
+
+	//values needed for the game
+	int lives;
+	int score;
+	bool defeat = false;
+
+
 	uint bonus_fx;
 };
