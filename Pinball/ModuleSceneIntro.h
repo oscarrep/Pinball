@@ -34,9 +34,9 @@ public:
 
 	//elements
 	PhysBody* balls;
-	PhysBody* Lflipper;
-	PhysBody* Rflipper;
-	PhysBody* Tflipper;
+	//PhysBody* Lflipper;
+	//PhysBody* Rflipper;
+	//PhysBody* UpperFlipper;
 	PhysBody* bouncer1;
 	PhysBody* bouncer2;
 	PhysBody* bouncer3;

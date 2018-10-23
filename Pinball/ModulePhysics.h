@@ -48,7 +48,15 @@ public:
 	PhysBody* CreateRectangleStatic(int x, int y, int width, int height);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, Module* listener);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
-	PhysBody* CreateFlipper(int x, int y, int w, int h, bool right_side);
+	
+	b2Body* CreateLFlipper();
+	b2Body* CreateRFlipper();
+	b2Body* CreateUpperFlipper();
+	b2Body* fbody;
+	b2Body* fbody2;
+	b2Body* fbody3;
+	b2Body* fbody4;
+
 	PhysBody* CreatePiston();
 
 	// b2ContactListener ---

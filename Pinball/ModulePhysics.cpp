@@ -422,6 +422,135 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
 	return pbody;
 }
 
+b2Body* ModulePhysics::CreateRFlipper() {
+	b2BodyDef flipperBodyDef;
+	flipperBodyDef.type = b2_dynamicBody;
+	flipperBodyDef.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(803));
+
+	fbody = world->CreateBody(&flipperBodyDef);
+
+	b2PolygonShape box;
+	box.SetAsBox(PIXEL_TO_METERS(85) * 0.5f, PIXEL_TO_METERS(24) * 0.5f);
+
+	b2FixtureDef flipperFixture;
+	flipperFixture.shape = &box;
+	flipperFixture.density = 2;
+	fbody->CreateFixture(&flipperFixture);
+
+	b2BodyDef flipperCircleDef;
+	flipperCircleDef.position.Set(PIXEL_TO_METERS(410), PIXEL_TO_METERS(803));
+	flipperCircleDef.type = b2_staticBody;
+
+	b2Body* circleBody = world->CreateBody(&flipperCircleDef);
+
+	b2CircleShape circle;
+	circle.m_radius = PIXEL_TO_METERS(1);
+	b2FixtureDef fixture;
+	fixture.shape = &circle;
+	circleBody->CreateFixture(&fixture);
+
+	b2RevoluteJointDef flipperJointDef;
+	flipperJointDef.bodyA = fbody;
+	flipperJointDef.bodyB = circleBody;
+	flipperJointDef.localAnchorA.Set(0.5, 0);
+	flipperJointDef.localAnchorB.Set(0, 0);
+	flipperJointDef.enableLimit = true;
+	flipperJointDef.lowerAngle = -25 * DEGTORAD;
+	flipperJointDef.upperAngle = 25 * DEGTORAD;
+	flipperJointDef.maxMotorTorque = 10.0;
+	flipperJointDef.motorSpeed = 5.0;
+	flipperJointDef.enableMotor = true;
+	world->CreateJoint(&flipperJointDef);
+
+	return fbody;
+}
+
+/*b2Body* ModulePhysics::CreateLFlipper() {
+	b2BodyDef flipperBodyDef2;
+	flipperBodyDef2.type = b2_dynamicBody;
+	flipperBodyDef2.position.Set(PIXEL_TO_METERS(420), PIXEL_TO_METERS(803));
+
+	fbody = world->CreateBody(&flipperBodyDef2);
+
+	b2PolygonShape box2;
+	box2.SetAsBox(PIXEL_TO_METERS(82) * 0.5f, PIXEL_TO_METERS(24) * 0.5f);
+
+	b2FixtureDef flipperFixture2;
+	flipperFixture2.shape = &box2;
+	flipperFixture2.density = 2;
+	fbody->CreateFixture(&flipperFixture2);
+
+	b2BodyDef flipperCircleDef2;
+	flipperCircleDef2.position.Set(PIXEL_TO_METERS(420), PIXEL_TO_METERS(803));
+	flipperCircleDef2.type = b2_staticBody;
+
+	b2Body* circleBody2 = world->CreateBody(&flipperCircleDef2);
+
+	b2CircleShape circle2;
+	circle2.m_radius = PIXEL_TO_METERS(1);
+	b2FixtureDef fixture2;
+	fixture2.shape = &circle2;
+	circleBody2->CreateFixture(&fixture2);
+
+	b2RevoluteJointDef flipperJointDef2;
+	flipperJointDef2.bodyA = fbody2;
+	flipperJointDef2.bodyB = circleBody2;
+	flipperJointDef2.localAnchorA.Set(0.5, 0);
+	flipperJointDef2.localAnchorB.Set(0, 0);
+	flipperJointDef2.enableLimit = true;
+	flipperJointDef2.lowerAngle = -25 * DEGTORAD;
+	flipperJointDef2.upperAngle = 25 * DEGTORAD;
+	flipperJointDef2.maxMotorTorque = 10.0;
+	flipperJointDef2.motorSpeed = 5.0;
+	flipperJointDef2.enableMotor = true;
+	world->CreateJoint(&flipperJointDef2);
+
+	return fbody2;
+}*/
+
+/*b2Body* ModulePhysics::CreateUpperFlipper() {
+	b2BodyDef flipperBodyDef3;
+	flipperBodyDef3.type = b2_dynamicBody;
+	flipperBodyDef3.position.Set(PIXEL_TO_METERS(420), PIXEL_TO_METERS(803));
+
+	fbody = world->CreateBody(&flipperBodyDef3);
+
+	b2PolygonShape box3;
+	box3.SetAsBox(PIXEL_TO_METERS(82) * 0.5f, PIXEL_TO_METERS(24) * 0.5f);
+
+	b2FixtureDef flipperFixture3;
+	flipperFixture3.shape = &box3;
+	flipperFixture3.density = 2;
+	fbody->CreateFixture(&flipperFixture3);
+
+	b2BodyDef flipperCircleDef3;
+	flipperCircleDef3.position.Set(PIXEL_TO_METERS(420), PIXEL_TO_METERS(803));
+	flipperCircleDef3.type = b2_staticBody;
+
+	b2Body* circleBody3 = world->CreateBody(&flipperCircleDef3);
+
+	b2CircleShape circle3;
+	circle3.m_radius = PIXEL_TO_METERS(1);
+	b2FixtureDef fixture3;
+	fixture3.shape = &circle3;
+	circleBody3->CreateFixture(&fixture3);
+
+	b2RevoluteJointDef flipperJointDef3;
+	flipperJointDef3.bodyA = fbody3;
+	flipperJointDef3.bodyB = circleBody3;
+	flipperJointDef3.localAnchorA.Set(0.5, 0);
+	flipperJointDef3.localAnchorB.Set(0, 0);
+	flipperJointDef3.enableLimit = true;
+	flipperJointDef3.lowerAngle = -25 * DEGTORAD;
+	flipperJointDef3.upperAngle = 25 * DEGTORAD;
+	flipperJointDef3.maxMotorTorque = 10.0;
+	flipperJointDef3.motorSpeed = 5.0;
+	flipperJointDef3.enableMotor = true;
+	world->CreateJoint(&flipperJointDef3);
+
+	return fbody3;
+}*/
+
 update_status ModulePhysics::PostUpdate()
 {
 	if(App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)

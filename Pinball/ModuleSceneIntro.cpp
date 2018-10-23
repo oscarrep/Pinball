@@ -30,6 +30,10 @@ bool ModuleSceneIntro::Start()
 	background = App->textures->Load("pinball/background.png");
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
 
+	//App->physics->CreateLFlipper();
+	App->physics->CreateRFlipper();
+	//App->physics->CreateUpperFlipper();
+
 	backgroundrect.h = 907;
 	backgroundrect.w = 609;
 
@@ -57,10 +61,23 @@ update_status ModuleSceneIntro::Update()
 {
 	App->renderer->Blit(background, 0, 0, &backgroundrect);
 
+
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 15));
 		circles.getLast()->data->listener = this;
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	{
+		App->physics->fbody->ApplyTorque(250.0, true);
+	}
+	else
+	{
+		if (App->physics->fbody->IsAwake())
+		{
+			App->physics->fbody->ApplyTorque(-250.0, false);
+		}
 	}
 
 	// All draw functions ------------------------------------------------------
