@@ -43,7 +43,9 @@ public:
 	bool CleanUp();
 
 	PhysBody* CreateCircle(int x, int y, int radius);
+	PhysBody* CreateCircleStatic(int x, int y, int radius);
 	PhysBody* CreateRectangle(int x, int y, int width, int height);
+	PhysBody* CreateRectangleStatic(int x, int y, int width, int height);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, Module* listener);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
 	PhysBody* CreateFlipper(int x, int y, int w, int h, bool right_side);
@@ -59,13 +61,26 @@ public:
 	p2List<PhysBody*> out;
 	p2List<PhysBody*> r_inline;
 	p2List<PhysBody*> l_inline;
-	//p2List<PhysBody*> l_triangle;
-	//p2List<PhysBody*> r_triangle;
-	//p2List<PhysBody*> t_triangle;
-	//p2List<PhysBody*> l_heart;
-	//p2List<PhysBody*> r_heart;
-	//p2List<PhysBody*> l_flipper_base;
-	//p2List<PhysBody*> r_flipper_base;
+
+	PhysBody* balls;
+	PhysBody* Lflipper;
+	PhysBody* Rflipper;
+	PhysBody* Tflipper;
+	PhysBody* bumper1;
+	PhysBody* bumper2;
+	PhysBody* bumper3;
+	PhysBody* bumper4;
+	PhysBody* pond;
+	PhysBody* l_triangle;
+	PhysBody* r_triangle;
+	PhysBody* t_triangle;
+	PhysBody* l_hearth;
+	PhysBody* r_hearth;
+	PhysBody* l_flipper_base1;
+	PhysBody* l_flipper_base2;
+	PhysBody* r_flipper_base1;
+	PhysBody* r_flipper_base2;
+
 
 	b2World* world;
 

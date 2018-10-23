@@ -145,66 +145,18 @@ bool ModulePhysics::Start()
 
 	l_inline.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_inline, 66));
 
-	/*int left_triangle[8] = {
-		175, 626,
-		175, 708,
-		221, 730,
-		178, 625
-	};
-	l_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_triangle, 8));
+	
+	bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
+	bumper2 = App->physics->CreateCircleStatic(280, 300, 25);
+	bumper3 = App->physics->CreateCircleStatic(372, 249, 25);
+	bumper4 = App->physics->CreateCircleStatic(380, 410, 25);
+	pond = App->physics->CreateCircleStatic(204, 449, 25);
 
-	int right_triangle[8] = {
-		469, 625,
-		470, 711,
-		423, 732,
-		465, 626
-	};
-	r_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_triangle, 8));
+	l_hearth = App->physics->CreateRectangleStatic(300, 130, 13, 38);
+	r_hearth = App->physics->CreateRectangleStatic(344, 130, 13, 38);
 
-	int top_triangle[8] = {
-		237, 320,
-		280, 309,
-		318, 346,
-		237, 321
-	};
-	t_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), top_triangle, 8));
-
-	int heart_barrier_left[4] = {
-		301, 118,
-		300, 143
-	};
-	l_heart.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), heart_barrier_left, 4));
-
-	int heart_barrier_right[4] = {
-		346, 119,
-		345, 145
-	};
-	r_heart.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), heart_barrier_right, 4));
-
-	int flipper_base_left[16] = {
-		125, 632,
-		125, 722,
-		132, 747,
-		153, 768,
-		216, 807,
-		222, 790,
-		147, 742,
-		125, 701
-	};
-	l_flipper_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), flipper_base_left, 16));
-
-	int flipper_base_right[16] = {
-		516, 632,
-		519, 685,
-		518, 732,
-		501, 759,
-		433, 802,
-		424, 787,
-		495, 743,
-		518, 703
-	};
-	r_flipper_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), flipper_base_right, 16));
-	*/
+	l_flipper_base1 = App->physics->CreateRectangleStatic(126, 684, 13, 120);
+	r_flipper_base1 = App->physics->CreateRectangleStatic(517, 684, 13, 120);
 
 	return true;
 }
@@ -251,10 +203,59 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius)
 	return pbody;
 }
 
+PhysBody* ModulePhysics::CreateCircleStatic(int x, int y, int radius)
+{
+	b2BodyDef body;
+	body.type = b2_staticBody;
+	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+
+	b2Body* b = world->CreateBody(&body);
+
+	b2CircleShape shape;
+	shape.m_radius = PIXEL_TO_METERS(radius);
+	b2FixtureDef fixture;
+	fixture.shape = &shape;
+	fixture.density = 1.0f;
+
+	b->CreateFixture(&fixture);
+
+	PhysBody* pbody = new PhysBody();
+	pbody->body = b;
+	b->SetUserData(pbody);
+	pbody->width = pbody->height = radius;
+
+	return pbody;
+}
+
 PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
+	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+
+	b2Body* b = world->CreateBody(&body);
+	b2PolygonShape box;
+	box.SetAsBox(PIXEL_TO_METERS(width) * 0.5f, PIXEL_TO_METERS(height) * 0.5f);
+
+	b2FixtureDef fixture;
+	fixture.shape = &box;
+	fixture.density = 1.0f;
+
+	b->CreateFixture(&fixture);
+
+	PhysBody* pbody = new PhysBody();
+	pbody->body = b;
+	b->SetUserData(pbody);
+	pbody->width = width * 0.5f;
+	pbody->height = height * 0.5f;
+
+	return pbody;
+}
+
+PhysBody* ModulePhysics::CreateRectangleStatic(int x, int y, int width, int height)
+{
+	b2BodyDef body;
+	body.type = b2_staticBody;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	b2Body* b = world->CreateBody(&body);
