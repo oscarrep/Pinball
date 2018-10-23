@@ -48,11 +48,12 @@ public:
 	PhysBody* CreateChain(int x, int y, int* points, int size);
 	PhysBody* CreateFlipper();
 	PhysBody* CreatePiston();
+
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
 	
-	////void CreateLflipper(p2List<PhysBody*>* Lflipper);
-	////void CreateRflipper(p2List<PhysBody*>* Rflipper);
+	//void CreateLflipper(p2List<PhysBody*>* Lflipper);
+	//void CreateRflipper(p2List<PhysBody*>* Rflipper);
 
 	//pinball phisical contour
 	p2List<PhysBody*> out;
@@ -66,17 +67,18 @@ public:
 	p2List<PhysBody*> l_flipper_base;
 	p2List<PhysBody*> r_flipper_base;
 
+	b2World* world;
+
 private:
 
 	bool debug;
-	b2World* world;
 	b2Body* ground;
 
 	// Mouse joint
 	b2MouseJoint* mouse_joint;
 	b2Body* body_clicked;
 
-	////b2RevoluteJoint* LflipperJoint;
-	////b2RevoluteJoint* RflipperJoint;
+	//b2RevoluteJoint* LflipperJoint;
+	//b2RevoluteJoint* RflipperJoint;
 
 };

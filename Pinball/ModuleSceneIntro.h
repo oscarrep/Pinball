@@ -33,16 +33,16 @@ public:
 
 
 	//elements
-	p2List<PhysBody*> balls;
-	p2List<PhysBody*>* Lflipper;
-	p2List<PhysBody*>* Rflipper;
+	PhysBody* balls;
+	PhysBody* Lflipper;
+	PhysBody* Rflipper;
+	PhysBody* Tflipper;
 	PhysBody* bouncer1;
 	PhysBody* bouncer2;
 	PhysBody* bouncer3;
 	PhysBody* bouncer4;
 	PhysBody* bouncer5;
-	PhysBody* out_of_bounds = nullptr; //zone where player loses a live
-
+	
 	//contour
 	p2List<PhysBody*> out;
 	p2List<PhysBody*> r_inline;
@@ -74,7 +74,7 @@ public:
 	int lives;
 	int score;
 	bool defeat = false;
-
+	iPoint ballpos;
 
 	uint bonus_fx;
 };

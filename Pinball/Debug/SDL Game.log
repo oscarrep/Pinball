@@ -1,13 +1,4 @@
-﻿  Application.cpp
-  ModulePhysics.cpp
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(127): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(128): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(172): warning C4018: '<': signed/unsigned mismatch
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(401): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(402): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(408): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
-  ModuleSceneIntro.cpp
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(270): warning C4101: 'y': unreferenced local variable
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(270): warning C4101: 'x': unreferenced local variable
-  Generating Code...
+﻿  ModuleSceneIntro.cpp
+c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(275): warning C4101: 'y': unreferenced local variable
+c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(275): warning C4101: 'x': unreferenced local variable
   SDL Game.vcxproj -> C:\Users\adell\Documents\GitHub\Pinball\Pinball\Debug\2D Physics - class 4.exe

@@ -33,7 +33,7 @@ bool ModuleSceneIntro::Start()
 	backgroundrect.h = 907;
 	backgroundrect.w = 609;
 
-	lives = 3;
+	//lives = 3;
 	//defining the phisical body of the map
 	// Pivot 0, 0
 	int outline[72] = {
@@ -72,7 +72,7 @@ bool ModuleSceneIntro::Start()
 		520, 862,
 		515, 802,
 		380, 875,
-		378, 904
+		378, 1000
 	};
 
 	out.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), outline, 72));
@@ -207,6 +207,7 @@ bool ModuleSceneIntro::Start()
 	r_flipper_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), flipper_base_right, 16));
 
 	SpawnBall();
+
 	return ret;
 }
 
@@ -262,6 +263,10 @@ update_status ModuleSceneIntro::Update()
 		c = c->next;
 	}
 
+	if (ballpos.y > 907) {
+		PlayerDeath();
+	}
+
 	return UPDATE_CONTINUE;
 }
 
@@ -277,20 +282,27 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 void ModuleSceneIntro::SpawnBall()
 {
-	balls.add(App->physics->CreateCircle(44, 791, 15));
-	balls.getLast()->data->listener = this;
+	balls = App->physics->CreateCircle(44, 791, 15);
+
 }
 
+
+
 void ModuleSceneIntro::PlayerDeath() {
-	
 
-	lives = --lives;
+	App->physics->world->DestroyBody(balls->body);
 
-	if (lives == 0) {
+	lives = lives - 1;
+
+	SpawnBall();
+
+	/*if (lives <= 0) {
 		defeat = true;
 	}
 	
 	if (defeat == true) {
+		//GameOver();
+	}*/
 
-	}
+
 }
