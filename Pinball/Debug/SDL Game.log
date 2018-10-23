@@ -1,10 +1,15 @@
-﻿  ModulePhysics.cpp
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(249): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(250): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(274): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(275): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(325): warning C4018: '<': signed/unsigned mismatch
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(543): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(544): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(550): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
+﻿  Application.cpp
+  ModulePhysics.cpp
+c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(326): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(327): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(351): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(352): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(402): warning C4018: '<': signed/unsigned mismatch
+c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(620): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(621): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(627): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
+  ModuleSceneIntro.cpp
+c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(106): warning C4101: 'y': unreferenced local variable
+c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(106): warning C4101: 'x': unreferenced local variable
+  Generating Code...
   SDL Game.vcxproj -> C:\Users\adell\Documents\GitHub\Pinball\Pinball\Debug\2D Physics - class 4.exe

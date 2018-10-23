@@ -77,9 +77,9 @@ public:
 	PhysBody* l_hearth;
 	PhysBody* r_hearth;
 	PhysBody* l_flipper_base1;
-	PhysBody* l_flipper_base2;
+	//b2Vec2 l_flipper_base2;
 	PhysBody* r_flipper_base1;
-	PhysBody* r_flipper_base2;
+	//b2Vec2 r_flipper_base2;
 
 
 	b2World* world;
