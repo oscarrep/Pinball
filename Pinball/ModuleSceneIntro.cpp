@@ -25,7 +25,7 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	ball = App->textures->Load("pinball/pinball_ball.png");
-	
+
 	rick = App->textures->Load("pinball/rick_head.png");
 	background = App->textures->Load("pinball/background2.png");
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
@@ -33,6 +33,7 @@ bool ModuleSceneIntro::Start()
 	App->physics->CreateLFlipper();
 	App->physics->CreateRFlipper();
 	App->physics->CreateUpperFlipper();
+	App->physics->CreatePiston();
 
 	backgroundrect.h = 907;
 	backgroundrect.w = 609;
@@ -41,11 +42,6 @@ bool ModuleSceneIntro::Start()
 	//defining the phisical body of the map
 	// Pivot 0, 0
 
-	//piston/launcher
-	piston = App->physics->CreateRectangle(19, 660, 21, 26);
-	piston->body->SetFixedRotation(true);
-	
-	
 	SpawnBall();
 
 	return ret;
@@ -67,7 +63,7 @@ update_status ModuleSceneIntro::Update()
 	App->renderer->Blit(background, 0, 0, &backgroundrect);
 
 	// Debug spawn ball
-	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 15));
 		circles.getLast()->data->listener = this;
@@ -98,25 +94,24 @@ update_status ModuleSceneIntro::Update()
 			App->physics->fbody2->ApplyTorque(250.0, false);
 			App->physics->fbody3->ApplyTorque(250.0, false);
 		}
-			
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
+	// Piston input
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
-		mouse_joint->SetTarget({ PIXEL_TO_METERS(16), PIXEL_TO_METERS(660) });
-		mouse_joint->SetFrequency(1.0f);
+		App->physics->fbody4->ApplyForce(b2Vec2(0, 250), App->physics->fbody4->GetLocalCenter(), true);
 	}
-	else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
-	{
-		
-		mouse_joint->SetTarget({ PIXEL_TO_METERS(16), PIXEL_TO_METERS(645) });
-		mouse_joint->SetFrequency(150.0f);
+	else {
+		if (App->physics->fbody4->IsAwake()) {
+			App->physics->fbody4->ApplyForce(b2Vec2(0, -250), App->physics->fbody4->GetLocalCenter(), true);
+		}
 	}
+
 
 	// All draw functions ------------------------------------------------------
 	p2List_item<PhysBody*>* c = circles.getFirst();
 
-	while(c != NULL)
+	while (c != NULL)
 	{
 		int x, y;
 		c->data->GetPosition(x, y);
@@ -126,7 +121,7 @@ update_status ModuleSceneIntro::Update()
 
 	c = boxes.getFirst();
 
-	while(c != NULL)
+	while (c != NULL)
 	{
 		int x, y;
 		c->data->GetPosition(x, y);
@@ -136,7 +131,7 @@ update_status ModuleSceneIntro::Update()
 
 	c = ricks.getFirst();
 
-	while(c != NULL)
+	while (c != NULL)
 	{
 		int x, y;
 		c->data->GetPosition(x, y);
@@ -144,6 +139,8 @@ update_status ModuleSceneIntro::Update()
 		c = c->next;
 	}
 
+
+	// Player death
 	if (ballpos.y > 907) {
 		PlayerDeath();
 	}
@@ -178,11 +175,11 @@ void ModuleSceneIntro::PlayerDeath() {
 	SpawnBall();
 
 	/*if (lives <= 0) {
-		defeat = true;
+	defeat = true;
 	}
-	
+
 	if (defeat == true) {
-		//GameOver();
+	//GameOver();
 	}*/
 
 

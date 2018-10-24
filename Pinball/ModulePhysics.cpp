@@ -3,7 +3,6 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePhysics.h"
-#include "ModuleSceneIntro.h"
 #include "p2Point.h"
 #include "math.h"
 
@@ -31,180 +30,180 @@ bool ModulePhysics::Start()
 
 	world = new b2World(b2Vec2(GRAVITY_X, -GRAVITY_Y));
 	world->SetContactListener(this);
-		
+
 	// needed to create joints like mouse joint
 	b2BodyDef bd;
 	ground = world->CreateBody(&bd);
-	
+
 	int outline[186] = {
-	19, 904,
-	19, 567,
-	22, 401,
-	28, 350,
-	35, 311,
-	45, 272,
-	62, 232,
-	85, 196,
-	100, 168,
-	122, 146,
-	140, 125,
-	171, 102,
-	196, 82,
-	229, 64,
-	258, 54,
-	286, 47,
-	317, 42,
-	335, 25,
-	355, 10,
-	399, 2,
-	427, 1,
-	444, 5,
-	463, 12,
-	479, 22,
-	492, 32,
-	508, 50,
-	521, 66,
-	535, 84,
-	549, 104,
-	559, 126,
-	570, 150,
-	582, 185,
-	592, 227,
-	597, 263,
-	599, 304,
-	597, 335,
-	592, 368,
-	584, 395,
-	570, 426,
-	559, 457,
-	548, 477,
-	538, 500,
-	533, 527,
-	534, 535,
-	540, 541,
-	548, 551,
-	555, 565,
-	557, 575,
-	559, 597,
-	557, 657,
-	558, 718,
-	557, 790,
-	560, 858,
-	517, 858,
-	516, 802,
-	378, 876,
-	378, 903,
-	379, 966,
-	381, 1037,
-	77, 1038,
-	68, 892,
-	65, 751,
-	63, 642,
-	63, 563,
-	62, 477,
-	65, 405,
-	75, 338,
-	96, 268,
-	122, 221,
-	150, 180,
-	181, 154,
-	217, 129,
-	249, 112,
-	254, 157,
-	209, 174,
-	160, 187,
-	128, 222,
-	101, 268,
-	81, 341,
-	82, 355,
-	90, 358,
-	134, 394,
-	134, 527,
-	116, 536,
-	98, 547,
-	89, 561,
-	83, 578,
-	82, 598,
-	84, 861,
-	128, 861,
-	127, 803,
-	261, 875,
-	261, 903
+		19, 904,
+		19, 567,
+		22, 401,
+		28, 350,
+		35, 311,
+		45, 272,
+		62, 232,
+		85, 196,
+		100, 168,
+		122, 146,
+		140, 125,
+		171, 102,
+		196, 82,
+		229, 64,
+		258, 54,
+		286, 47,
+		317, 42,
+		335, 25,
+		355, 10,
+		399, 2,
+		427, 1,
+		444, 5,
+		463, 12,
+		479, 22,
+		492, 32,
+		508, 50,
+		521, 66,
+		535, 84,
+		549, 104,
+		559, 126,
+		570, 150,
+		582, 185,
+		592, 227,
+		597, 263,
+		599, 304,
+		597, 335,
+		592, 368,
+		584, 395,
+		570, 426,
+		559, 457,
+		548, 477,
+		538, 500,
+		533, 527,
+		534, 535,
+		540, 541,
+		548, 551,
+		555, 565,
+		557, 575,
+		559, 597,
+		557, 657,
+		558, 718,
+		557, 790,
+		560, 858,
+		517, 858,
+		516, 802,
+		378, 876,
+		378, 903,
+		379, 966,
+		381, 1037,
+		77, 1038,
+		68, 892,
+		65, 751,
+		63, 642,
+		63, 563,
+		62, 477,
+		65, 405,
+		75, 338,
+		96, 268,
+		122, 221,
+		150, 180,
+		181, 154,
+		217, 129,
+		249, 112,
+		254, 157,
+		209, 174,
+		160, 187,
+		128, 222,
+		101, 268,
+		81, 341,
+		82, 355,
+		90, 358,
+		134, 394,
+		134, 527,
+		116, 536,
+		98, 547,
+		89, 561,
+		83, 578,
+		82, 598,
+		84, 861,
+		128, 861,
+		127, 803,
+		261, 875,
+		261, 903
 	};
-	
+
 	int right_inline[54] = {
-	446, 434,
-	491, 457,
-	537, 386,
-	557, 324,
-	560, 271,
-	554, 213,
-	528, 165,
-	505, 127,
-	464, 85,
-	433, 67,
-	410, 60,
-	395, 71,
-	381, 98,
-	384, 117,
-	385, 146,
-	398, 161,
-	424, 168,
-	453, 177,
-	470, 183,
-	482, 202,
-	474, 248,
-	459, 295,
-	425, 351,
-	390, 387,
-	399, 393,
-	407, 403,
-	447, 434
+		446, 434,
+		491, 457,
+		537, 386,
+		557, 324,
+		560, 271,
+		554, 213,
+		528, 165,
+		505, 127,
+		464, 85,
+		433, 67,
+		410, 60,
+		395, 71,
+		381, 98,
+		384, 117,
+		385, 146,
+		398, 161,
+		424, 168,
+		453, 177,
+		470, 183,
+		482, 202,
+		474, 248,
+		459, 295,
+		425, 351,
+		390, 387,
+		399, 393,
+		407, 403,
+		447, 434
 	};
 
 	int left_base[18] = {
-	135, 729,
-	156, 746,
-	196, 771,
-	213, 781,
-	203, 803,
-	179, 790,
-	153, 772,
-	137, 758,
-	129, 746
+		135, 729,
+		156, 746,
+		196, 771,
+		213, 781,
+		203, 803,
+		179, 790,
+		153, 772,
+		137, 758,
+		129, 746
 	};
 
 	int left_triangle[8] = {
-	175, 626,
-	175, 708,
-	221, 730,
-	178, 625
+		175, 626,
+		175, 708,
+		221, 730,
+		178, 625
 	};
 
 	int right_base[16] = {
-	507, 728,
-	486, 747,
-	460, 764,
-	432, 780,
-	443, 803,
-	475, 782,
-	497, 767,
-	514, 744
+		507, 728,
+		486, 747,
+		460, 764,
+		432, 780,
+		443, 803,
+		475, 782,
+		497, 767,
+		514, 744
 	};
 
 
 	int right_triangle[8] = {
-	469, 625,
-	470, 711,
-	423, 732,
-	465, 626
+		469, 625,
+		470, 711,
+		423, 732,
+		465, 626
 	};
 
 	int top_triangle[8] = {
-	237, 320,
-	280, 309,
-	318, 346,
-	237, 321
+		237, 320,
+		280, 309,
+		318, 346,
+		237, 321
 	};
 
 	out.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), outline, 186));
@@ -214,7 +213,11 @@ bool ModulePhysics::Start()
 	r_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_triangle, 8));
 	l_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_triangle, 8));
 	t_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), top_triangle, 8));
-		
+
+
+
+
+
 	bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
 	bumper2 = App->physics->CreateCircleStatic(280, 300, 25);
 	bumper3 = App->physics->CreateCircleStatic(372, 249, 25);
@@ -226,15 +229,9 @@ bool ModulePhysics::Start()
 
 	l_flipper_base1 = App->physics->CreateRectangleStatic(126, 684, 13, 120);
 	r_flipper_base1 = App->physics->CreateRectangleStatic(517, 684, 13, 120);
-	
-	//piston joint
-	b2MouseJointDef def;
-	def.bodyA = App->physics->ground;
-	def.bodyB = piston->body;
-	def.target = { PIXEL_TO_METERS(19), PIXEL_TO_METERS(660) };
-	def.dampingRatio = 1.0f;
-	def.maxForce = 10000.0f * piston->body->GetMass();
-	mouse_joint = (b2MouseJoint*)App->physics->world->CreateJoint(&def);
+
+
+
 
 	return true;
 }
@@ -243,13 +240,13 @@ update_status ModulePhysics::PreUpdate()
 {
 	world->Step(1.0f / 60.0f, 6, 2);
 
-	for(b2Contact* c = world->GetContactList(); c; c = c->GetNext())
+	for (b2Contact* c = world->GetContactList(); c; c = c->GetNext())
 	{
-		if(c->GetFixtureA()->IsSensor() && c->IsTouching())
+		if (c->GetFixtureA()->IsSensor() && c->IsTouching())
 		{
 			PhysBody* pb1 = (PhysBody*)c->GetFixtureA()->GetBody()->GetUserData();
 			PhysBody* pb2 = (PhysBody*)c->GetFixtureB()->GetBody()->GetUserData();
-			if(pb1 && pb2 && pb1->listener)
+			if (pb1 && pb2 && pb1->listener)
 				pb1->listener->OnCollision(pb1, pb2);
 		}
 	}
@@ -355,6 +352,12 @@ PhysBody* ModulePhysics::CreateRectangleStatic(int x, int y, int width, int heig
 	return pbody;
 }
 
+
+/*PhysBody* ModulePhysics::CreatePiston()
+{
+return piston;
+}*/
+
 PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height, Module *listener)
 {
 	b2BodyDef body;
@@ -394,7 +397,7 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
 	b2ChainShape shape;
 	b2Vec2* p = new b2Vec2[size / 2];
 
-	for(uint i = 0; i < size / 2; ++i)
+	for (uint i = 0; i < size / 2; ++i)
 	{
 		p[i].x = PIXEL_TO_METERS(points[i * 2 + 0]);
 		p[i].y = PIXEL_TO_METERS(points[i * 2 + 1]);
@@ -546,12 +549,59 @@ b2Body* ModulePhysics::CreateUpperFlipper() {
 	return fbody3;
 }
 
+b2Body* ModulePhysics::CreatePiston() {
+	b2BodyDef flipperBodyDef4;
+	flipperBodyDef4.type = b2_dynamicBody;
+	flipperBodyDef4.position.Set(PIXEL_TO_METERS(40), PIXEL_TO_METERS(900));
+
+	fbody4 = world->CreateBody(&flipperBodyDef4);
+
+	b2PolygonShape box4;
+	box4.SetAsBox(PIXEL_TO_METERS(25) * 0.5f, PIXEL_TO_METERS(20) * 0.5f);
+
+	b2FixtureDef flipperFixture4;
+	flipperFixture4.shape = &box4;
+	flipperFixture4.density = 2;
+	fbody4->CreateFixture(&flipperFixture4);
+
+	b2BodyDef quad;
+	quad.position.Set(PIXEL_TO_METERS(40), PIXEL_TO_METERS(900));
+	quad.type = b2_staticBody;
+
+	b2Body* quadbody = world->CreateBody(&quad);
+
+	b2PolygonShape quad2;
+	quad2.SetAsBox(PIXEL_TO_METERS(25) * 0.5f, PIXEL_TO_METERS(20) * 0.5f);
+	b2FixtureDef fixture4;
+	fixture4.shape = &quad2;
+	quadbody->CreateFixture(&fixture4);
+
+	b2PrismaticJointDef prismaticJointDef4;
+	prismaticJointDef4.bodyA = quadbody;
+	prismaticJointDef4.bodyB = fbody4;
+	prismaticJointDef4.collideConnected = false;
+	prismaticJointDef4.localAxisA.Set(0, 1);
+	prismaticJointDef4.localAxisA.Normalize();
+	prismaticJointDef4.localAnchorA.Set(0, 0);
+	prismaticJointDef4.localAnchorB.Set(0, 0);
+	prismaticJointDef4.enableLimit = true;
+	prismaticJointDef4.lowerTranslation = -1.0;
+	prismaticJointDef4.upperTranslation = 1.0;
+	prismaticJointDef4.referenceAngle = 0 * DEGTORAD;
+	prismaticJointDef4.enableMotor = true;
+	prismaticJointDef4.maxMotorForce = 200;
+	prismaticJointDef4.motorSpeed = -200;
+	world->CreateJoint(&prismaticJointDef4);
+
+	return fbody4;
+}
+
 update_status ModulePhysics::PostUpdate()
 {
-	if(App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
 
-	if(!debug)
+	if (!debug)
 		return UPDATE_CONTINUE;
 
 	// Implement a simple mouse joint when a body is clicked for debug purposes
@@ -563,80 +613,80 @@ update_status ModulePhysics::PostUpdate()
 
 	// Bonus code: this will iterate all objects in the world and draw the circles
 	// You need to provide your own macro to translate meters to pixels
-	for(b2Body* b = world->GetBodyList(); b; b = b->GetNext())
+	for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 	{
-		for(b2Fixture* f = b->GetFixtureList(); f; f = f->GetNext())
+		for (b2Fixture* f = b->GetFixtureList(); f; f = f->GetNext())
 		{
-			switch(f->GetType())
+			switch (f->GetType())
 			{
 				// Draw circles ------------------------------------------------
-				case b2Shape::e_circle:
+			case b2Shape::e_circle:
+			{
+				b2CircleShape* shape = (b2CircleShape*)f->GetShape();
+				b2Vec2 pos = f->GetBody()->GetPosition();
+				App->renderer->DrawCircle(METERS_TO_PIXELS(pos.x), METERS_TO_PIXELS(pos.y), METERS_TO_PIXELS(shape->m_radius), 255, 255, 255);
+			}
+			break;
+
+			// Draw polygons ------------------------------------------------
+			case b2Shape::e_polygon:
+			{
+				b2PolygonShape* polygonShape = (b2PolygonShape*)f->GetShape();
+				int32 count = polygonShape->GetVertexCount();
+				b2Vec2 prev, v;
+
+				for (int32 i = 0; i < count; ++i)
 				{
-					b2CircleShape* shape = (b2CircleShape*)f->GetShape();
-					b2Vec2 pos = f->GetBody()->GetPosition();
-					App->renderer->DrawCircle(METERS_TO_PIXELS(pos.x), METERS_TO_PIXELS(pos.y), METERS_TO_PIXELS(shape->m_radius), 255, 255, 255);
-				}
-				break;
+					v = b->GetWorldPoint(polygonShape->GetVertex(i));
+					if (i > 0)
+						App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 255, 100, 100);
 
-				// Draw polygons ------------------------------------------------
-				case b2Shape::e_polygon:
+					prev = v;
+				}
+
+				v = b->GetWorldPoint(polygonShape->GetVertex(0));
+				App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 255, 100, 100);
+			}
+			break;
+
+			// Draw chains contour -------------------------------------------
+			case b2Shape::e_chain:
+			{
+				b2ChainShape* shape = (b2ChainShape*)f->GetShape();
+				b2Vec2 prev, v;
+
+				for (int32 i = 0; i < shape->m_count; ++i)
 				{
-					b2PolygonShape* polygonShape = (b2PolygonShape*)f->GetShape();
-					int32 count = polygonShape->GetVertexCount();
-					b2Vec2 prev, v;
-
-					for(int32 i = 0; i < count; ++i)
-					{
-						v = b->GetWorldPoint(polygonShape->GetVertex(i));
-						if(i > 0)
-							App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 255, 100, 100);
-
-						prev = v;
-					}
-
-					v = b->GetWorldPoint(polygonShape->GetVertex(0));
-					App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 255, 100, 100);
+					v = b->GetWorldPoint(shape->m_vertices[i]);
+					if (i > 0)
+						App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
+					prev = v;
 				}
-				break;
 
-				// Draw chains contour -------------------------------------------
-				case b2Shape::e_chain:
-				{
-					b2ChainShape* shape = (b2ChainShape*)f->GetShape();
-					b2Vec2 prev, v;
+				v = b->GetWorldPoint(shape->m_vertices[0]);
+				App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
+			}
+			break;
 
-					for(int32 i = 0; i < shape->m_count; ++i)
-					{
-						v = b->GetWorldPoint(shape->m_vertices[i]);
-						if(i > 0)
-							App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
-						prev = v;
-					}
+			// Draw a single segment(edge) ----------------------------------
+			case b2Shape::e_edge:
+			{
+				b2EdgeShape* shape = (b2EdgeShape*)f->GetShape();
+				b2Vec2 v1, v2;
 
-					v = b->GetWorldPoint(shape->m_vertices[0]);
-					App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
-				}
-				break;
-
-				// Draw a single segment(edge) ----------------------------------
-				case b2Shape::e_edge:
-				{
-					b2EdgeShape* shape = (b2EdgeShape*)f->GetShape();
-					b2Vec2 v1, v2;
-
-					v1 = b->GetWorldPoint(shape->m_vertex0);
-					v1 = b->GetWorldPoint(shape->m_vertex1);
-					App->renderer->DrawLine(METERS_TO_PIXELS(v1.x), METERS_TO_PIXELS(v1.y), METERS_TO_PIXELS(v2.x), METERS_TO_PIXELS(v2.y), 100, 100, 255);
-				}
-				break;
+				v1 = b->GetWorldPoint(shape->m_vertex0);
+				v1 = b->GetWorldPoint(shape->m_vertex1);
+				App->renderer->DrawLine(METERS_TO_PIXELS(v1.x), METERS_TO_PIXELS(v1.y), METERS_TO_PIXELS(v2.x), METERS_TO_PIXELS(v2.y), 100, 100, 255);
+			}
+			break;
 			}
 
 			// TODO 1: If mouse button 1 is pressed ...
 			// App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN
 			// test if the current body contains mouse position
-			if(mouse_down == true && body_clicked == NULL)
+			if (mouse_down == true && body_clicked == NULL)
 			{
-				if(f->GetShape()->TestPoint(b->GetTransform(), mouse_position) == true)
+				if (f->GetShape()->TestPoint(b->GetTransform(), mouse_position) == true)
 					body_clicked = b;
 			}
 		}
@@ -646,7 +696,7 @@ update_status ModulePhysics::PostUpdate()
 	// so we can pull it around
 	// TODO 2: If a body was selected, create a mouse joint
 	// using mouse_joint class property
-	if(body_clicked != NULL && mouse_joint == NULL)
+	if (body_clicked != NULL && mouse_joint == NULL)
 	{
 		b2MouseJointDef def;
 		def.bodyA = ground;
@@ -656,12 +706,12 @@ update_status ModulePhysics::PostUpdate()
 		def.frequencyHz = 2.0f;
 		def.maxForce = 100.0f * body_clicked->GetMass();
 
-		mouse_joint = (b2MouseJoint*) world->CreateJoint(&def);
+		mouse_joint = (b2MouseJoint*)world->CreateJoint(&def);
 	}
 
 	// TODO 3: If the player keeps pressing the mouse button, update
 	// target position and draw a red line between both anchor points
-	if(mouse_repeat == true && mouse_joint != NULL)
+	if (mouse_repeat == true && mouse_joint != NULL)
 	{
 		mouse_joint->SetTarget(mouse_position);
 		App->renderer->DrawLine(
@@ -672,7 +722,7 @@ update_status ModulePhysics::PostUpdate()
 	}
 
 	// TODO 4: If the player releases the mouse button, destroy the joint
-	if(mouse_up == true && mouse_joint != NULL)
+	if (mouse_up == true && mouse_joint != NULL)
 	{
 		world->DestroyJoint(mouse_joint);
 		mouse_joint = NULL;
@@ -712,9 +762,9 @@ bool PhysBody::Contains(int x, int y) const
 
 	const b2Fixture* fixture = body->GetFixtureList();
 
-	while(fixture != NULL)
+	while (fixture != NULL)
 	{
-		if(fixture->GetShape()->TestPoint(body->GetTransform(), p) == true)
+		if (fixture->GetShape()->TestPoint(body->GetTransform(), p) == true)
 			return true;
 		fixture = fixture->GetNext();
 	}
@@ -735,9 +785,9 @@ int PhysBody::RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& no
 
 	const b2Fixture* fixture = body->GetFixtureList();
 
-	while(fixture != NULL)
+	while (fixture != NULL)
 	{
-		if(fixture->GetShape()->RayCast(&output, input, body->GetTransform(), 0) == true)
+		if (fixture->GetShape()->RayCast(&output, input, body->GetTransform(), 0) == true)
 		{
 			// do we want the normal ?
 
@@ -761,9 +811,9 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 	PhysBody* physA = (PhysBody*)contact->GetFixtureA()->GetBody()->GetUserData();
 	PhysBody* physB = (PhysBody*)contact->GetFixtureB()->GetBody()->GetUserData();
 
-	if(physA && physA->listener != NULL)
+	if (physA && physA->listener != NULL)
 		physA->listener->OnCollision(physA, physB);
 
-	if(physB && physB->listener != NULL)
+	if (physB && physB->listener != NULL)
 		physB->listener->OnCollision(physB, physA);
 }

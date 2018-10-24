@@ -31,6 +31,7 @@ public:
 	bool sensed;
 	////b2RevoluteJoint* flipperJoint;
 
+
 	//elements
 	PhysBody* balls;
 	//PhysBody* Lflipper;
@@ -41,9 +42,7 @@ public:
 	PhysBody* bouncer3;
 	PhysBody* bouncer4;
 	PhysBody* bouncer5;
-	PhysBody* piston;
-	b2MouseJoint* mouse_joint;
-	
+
 	//contour
 	p2List<PhysBody*> out;
 	p2List<PhysBody*> r_inline;
@@ -57,7 +56,7 @@ public:
 	//p2List<PhysBody*> r_flipper_base;
 
 	//Textures 
-	SDL_Texture* pistontexture;
+	SDL_Texture* piston;
 	SDL_Texture* background;
 	SDL_Texture* ball;
 	SDL_Texture* LflipperTexture;

@@ -48,25 +48,26 @@ public:
 	PhysBody* CreateRectangleStatic(int x, int y, int width, int height);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, Module* listener);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
-	
+
 	b2Body* CreateLFlipper();
 	b2Body* CreateRFlipper();
 	b2Body* CreateUpperFlipper();
+	b2Body* CreatePiston();
 	b2Body* fbody;
 	b2Body* fbody2;
 	b2Body* fbody3;
 	b2Body* fbody4;
-	
 
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
-	
+
 	//void CreateLflipper(p2List<PhysBody*>* Lflipper);
 	//void CreateRflipper(p2List<PhysBody*>* Rflipper);
 
 	//pinball phisical contour
 	p2List<PhysBody*> out;
 	p2List<PhysBody*> r_inline;
+	//p2List<PhysBody*> l_inline;
 	p2List<PhysBody*> l_triangle;
 	p2List<PhysBody*> r_triangle;
 	p2List<PhysBody*> t_triangle;
@@ -91,7 +92,6 @@ public:
 	//PhysBody* t_triangle;
 	//b2Vec2 l_flipper_base2;
 	//b2Vec2 r_flipper_base2;
-	//p2List<PhysBody*> l_inline;
 
 
 	b2World* world;
@@ -100,7 +100,6 @@ private:
 
 	bool debug;
 	b2Body* ground;
-	PhysBody* piston;
 
 	// Mouse joint
 	b2MouseJoint* mouse_joint;
