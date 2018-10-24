@@ -23,7 +23,6 @@ public:
 public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
-	p2List<PhysBody*> ricks;
 	p2List<PhysBody*> triangles;
 	////p2List<PhysBody*>* Lflipper;
 	////p2List<PhysBody*>* Rflipper;
@@ -33,10 +32,10 @@ public:
 
 
 	//elements
-	PhysBody* balls;
 	//PhysBody* Lflipper;
 	//PhysBody* Rflipper;
 	//PhysBody* UpperFlipper;
+	PhysBody* balls;
 	PhysBody* bouncer1;
 	PhysBody* bouncer2;
 	PhysBody* bouncer3;

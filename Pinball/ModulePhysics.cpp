@@ -509,7 +509,7 @@ b2Body* ModulePhysics::CreateLFlipper() {
 b2Body* ModulePhysics::CreateUpperFlipper() {
 	b2BodyDef flipperBodyDef3;
 	flipperBodyDef3.type = b2_dynamicBody;
-	flipperBodyDef3.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(403));
+	flipperBodyDef3.position.Set(PIXEL_TO_METERS(99), PIXEL_TO_METERS(345));
 
 	fbody3 = world->CreateBody(&flipperBodyDef3);
 
@@ -522,7 +522,7 @@ b2Body* ModulePhysics::CreateUpperFlipper() {
 	fbody3->CreateFixture(&flipperFixture3);
 
 	b2BodyDef flipperCircleDef3;
-	flipperCircleDef3.position.Set(PIXEL_TO_METERS(140), PIXEL_TO_METERS(380));
+	flipperCircleDef3.position.Set(PIXEL_TO_METERS(99), PIXEL_TO_METERS(345));
 	flipperCircleDef3.type = b2_staticBody;
 
 	b2Body* circleBody3 = world->CreateBody(&flipperCircleDef3);
@@ -536,7 +536,7 @@ b2Body* ModulePhysics::CreateUpperFlipper() {
 	b2RevoluteJointDef flipperJointDef3;
 	flipperJointDef3.bodyA = fbody3;
 	flipperJointDef3.bodyB = circleBody3;
-	flipperJointDef3.localAnchorA.Set(0.5, 0);
+	flipperJointDef3.localAnchorA.Set(-0.5, 0);
 	flipperJointDef3.localAnchorB.Set(0, 0);
 	flipperJointDef3.enableLimit = true;
 	flipperJointDef3.lowerAngle = -40 * DEGTORAD;
@@ -546,7 +546,7 @@ b2Body* ModulePhysics::CreateUpperFlipper() {
 	flipperJointDef3.enableMotor = true;
 	world->CreateJoint(&flipperJointDef3);
 
-	return fbody3;
+	return fbody2;
 }
 
 b2Body* ModulePhysics::CreatePiston() {
@@ -565,7 +565,7 @@ b2Body* ModulePhysics::CreatePiston() {
 	fbody4->CreateFixture(&flipperFixture4);
 
 	b2BodyDef quad;
-	quad.position.Set(PIXEL_TO_METERS(40), PIXEL_TO_METERS(900));
+	quad.position.Set(PIXEL_TO_METERS(40), PIXEL_TO_METERS(905));
 	quad.type = b2_staticBody;
 
 	b2Body* quadbody = world->CreateBody(&quad);
@@ -589,7 +589,7 @@ b2Body* ModulePhysics::CreatePiston() {
 	prismaticJointDef4.upperTranslation = 1.0;
 	prismaticJointDef4.referenceAngle = 0 * DEGTORAD;
 	prismaticJointDef4.enableMotor = true;
-	prismaticJointDef4.maxMotorForce = 200;
+	prismaticJointDef4.maxMotorForce = 0;
 	prismaticJointDef4.motorSpeed = -200;
 	world->CreateJoint(&prismaticJointDef4);
 
