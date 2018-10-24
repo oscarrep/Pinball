@@ -223,7 +223,9 @@ bool ModulePhysics::Start()
 
 		int32 count = 4;
 		b2PolygonShape polygon_b1;
-		polygon_b1.Set(l_flipper_base2, count);	/*b2Vec2 r_flipper_base2[4];
+		polygon_b1.Set(l_flipper_base2, count);
+
+	/*b2Vec2 r_flipper_base2[4];
 		r_flipper_base2[0].Set();
 		r_flipper_base2[1].Set();
 		r_flipper_base2[2].Set();
@@ -231,7 +233,8 @@ bool ModulePhysics::Start()
 
 		int32 count = 4;
 		b2PolygonShape polygon_b2;
-		polygon_b2.Set(r_flipper_base2, count);		*/
+		polygon_b2.Set(r_flipper_base2, count);
+		*/
 	
 
 	
@@ -430,7 +433,7 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	fbody = world->CreateBody(&flipperBodyDef);
 
 	b2PolygonShape box;
-	box.SetAsBox(PIXEL_TO_METERS(85) * 0.5f, PIXEL_TO_METERS(24) * 0.5f);
+	box.SetAsBox(PIXEL_TO_METERS(95) * 0.5f, PIXEL_TO_METERS(24) * 0.5f);
 
 	b2FixtureDef flipperFixture;
 	flipperFixture.shape = &box;
@@ -465,23 +468,23 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	return fbody;
 }
 
-/*b2Body* ModulePhysics::CreateLFlipper() {
+b2Body* ModulePhysics::CreateLFlipper() {
 	b2BodyDef flipperBodyDef2;
 	flipperBodyDef2.type = b2_dynamicBody;
-	flipperBodyDef2.position.Set(PIXEL_TO_METERS(420), PIXEL_TO_METERS(803));
+	flipperBodyDef2.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(803));
 
-	fbody = world->CreateBody(&flipperBodyDef2);
+	fbody2 = world->CreateBody(&flipperBodyDef2);
 
 	b2PolygonShape box2;
-	box2.SetAsBox(PIXEL_TO_METERS(82) * 0.5f, PIXEL_TO_METERS(24) * 0.5f);
+	box2.SetAsBox(PIXEL_TO_METERS(95) * 0.5f, PIXEL_TO_METERS(24) * 0.5f);
 
 	b2FixtureDef flipperFixture2;
 	flipperFixture2.shape = &box2;
 	flipperFixture2.density = 2;
-	fbody->CreateFixture(&flipperFixture2);
+	fbody2->CreateFixture(&flipperFixture2);
 
 	b2BodyDef flipperCircleDef2;
-	flipperCircleDef2.position.Set(PIXEL_TO_METERS(420), PIXEL_TO_METERS(803));
+	flipperCircleDef2.position.Set(PIXEL_TO_METERS(235), PIXEL_TO_METERS(803));
 	flipperCircleDef2.type = b2_staticBody;
 
 	b2Body* circleBody2 = world->CreateBody(&flipperCircleDef2);
@@ -495,7 +498,7 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	b2RevoluteJointDef flipperJointDef2;
 	flipperJointDef2.bodyA = fbody2;
 	flipperJointDef2.bodyB = circleBody2;
-	flipperJointDef2.localAnchorA.Set(0.5, 0);
+	flipperJointDef2.localAnchorA.Set(-0.5, 0);
 	flipperJointDef2.localAnchorB.Set(0, 0);
 	flipperJointDef2.enableLimit = true;
 	flipperJointDef2.lowerAngle = -25 * DEGTORAD;
@@ -506,25 +509,25 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	world->CreateJoint(&flipperJointDef2);
 
 	return fbody2;
-}*/
+}
 
-/*b2Body* ModulePhysics::CreateUpperFlipper() {
+b2Body* ModulePhysics::CreateUpperFlipper() {
 	b2BodyDef flipperBodyDef3;
 	flipperBodyDef3.type = b2_dynamicBody;
-	flipperBodyDef3.position.Set(PIXEL_TO_METERS(420), PIXEL_TO_METERS(803));
+	flipperBodyDef3.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(403));
 
-	fbody = world->CreateBody(&flipperBodyDef3);
+	fbody3 = world->CreateBody(&flipperBodyDef3);
 
 	b2PolygonShape box3;
-	box3.SetAsBox(PIXEL_TO_METERS(82) * 0.5f, PIXEL_TO_METERS(24) * 0.5f);
+	box3.SetAsBox(PIXEL_TO_METERS(85) * 0.5f, PIXEL_TO_METERS(24) * 0.5f);
 
 	b2FixtureDef flipperFixture3;
 	flipperFixture3.shape = &box3;
 	flipperFixture3.density = 2;
-	fbody->CreateFixture(&flipperFixture3);
+	fbody3->CreateFixture(&flipperFixture3);
 
 	b2BodyDef flipperCircleDef3;
-	flipperCircleDef3.position.Set(PIXEL_TO_METERS(420), PIXEL_TO_METERS(803));
+	flipperCircleDef3.position.Set(PIXEL_TO_METERS(140), PIXEL_TO_METERS(380));
 	flipperCircleDef3.type = b2_staticBody;
 
 	b2Body* circleBody3 = world->CreateBody(&flipperCircleDef3);
@@ -541,7 +544,7 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	flipperJointDef3.localAnchorA.Set(0.5, 0);
 	flipperJointDef3.localAnchorB.Set(0, 0);
 	flipperJointDef3.enableLimit = true;
-	flipperJointDef3.lowerAngle = -25 * DEGTORAD;
+	flipperJointDef3.lowerAngle = -40 * DEGTORAD;
 	flipperJointDef3.upperAngle = 25 * DEGTORAD;
 	flipperJointDef3.maxMotorTorque = 10.0;
 	flipperJointDef3.motorSpeed = 5.0;
@@ -549,7 +552,7 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	world->CreateJoint(&flipperJointDef3);
 
 	return fbody3;
-}*/
+}
 
 update_status ModulePhysics::PostUpdate()
 {
