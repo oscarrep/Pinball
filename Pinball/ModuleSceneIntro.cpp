@@ -27,7 +27,7 @@ bool ModuleSceneIntro::Start()
 	ball = App->textures->Load("pinball/pinball_ball.png");
 	
 	rick = App->textures->Load("pinball/rick_head.png");
-	background = App->textures->Load("pinball/background.png");
+	background = App->textures->Load("pinball/background2.png");
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
 
 	App->physics->CreateLFlipper();
