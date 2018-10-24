@@ -36,13 +36,13 @@ public:
 	//PhysBody* Rflipper;
 	//PhysBody* UpperFlipper;
 	PhysBody* balls;
-	PhysBody* bouncer1;
-	PhysBody* bouncer2;
-	PhysBody* bouncer3;
-	PhysBody* bouncer4;
-	PhysBody* bouncer5;
-	PhysBody* bouncer6;
-	
+	PhysBody* lefttribump;
+	PhysBody* righttribump;
+	PhysBody* bumper1;
+	PhysBody* bumper2;
+	PhysBody* bumper3;
+	PhysBody* bumper4;
+	PhysBody* pond;
 
 	//contour
 	p2List<PhysBody*> out;

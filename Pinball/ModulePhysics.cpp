@@ -218,11 +218,11 @@ bool ModulePhysics::Start()
 
 
 
-	bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
+	/*bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
 	bumper2 = App->physics->CreateCircleStatic(280, 300, 25);
 	bumper3 = App->physics->CreateCircleStatic(372, 249, 25);
 	bumper4 = App->physics->CreateCircleStatic(380, 410, 25);
-	pond = App->physics->CreateCircleStatic(204, 449, 25);
+	pond = App->physics->CreateCircleStatic(204, 449, 25);*/
 
 	l_hearth = App->physics->CreateRectangleStatic(300, 130, 13, 38);
 	r_hearth = App->physics->CreateRectangleStatic(344, 130, 13, 38);

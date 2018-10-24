@@ -78,11 +78,11 @@ public:
 	PhysBody* Lflipper;
 	PhysBody* Rflipper;
 	PhysBody* Tflipper;
-	PhysBody* bumper1;
+	/*PhysBody* bumper1;
 	PhysBody* bumper2;
 	PhysBody* bumper3;
 	PhysBody* bumper4;
-	PhysBody* pond;
+	PhysBody* pond;*/
 	PhysBody* l_hearth;
 	PhysBody* r_hearth;
 	PhysBody* l_flipper_base1;

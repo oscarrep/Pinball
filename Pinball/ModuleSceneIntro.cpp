@@ -38,6 +38,24 @@ bool ModuleSceneIntro::Start()
 	App->physics->CreateUpperFlipper();
 	App->physics->CreatePiston();
 
+	bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
+	bumper1->body->GetFixtureList()->SetDensity(10.0f);
+	bumper1->body->GetFixtureList()->SetRestitution(1.5f);
+
+	bumper2 = App->physics->CreateCircleStatic(280, 300, 25);
+	bumper2->body->GetFixtureList()->SetDensity(10.0f);
+	bumper2->body->GetFixtureList()->SetRestitution(1.5f);
+
+	bumper3 = App->physics->CreateCircleStatic(372, 249, 25);
+	bumper3->body->GetFixtureList()->SetDensity(10.0f);
+	bumper3->body->GetFixtureList()->SetRestitution(1.5f);
+
+	bumper4 = App->physics->CreateCircleStatic(380, 410, 25);
+	bumper4->body->GetFixtureList()->SetDensity(10.0f);
+	bumper4->body->GetFixtureList()->SetRestitution(1.5f);
+
+	pond = App->physics->CreateCircleStatic(204, 449, 25);
+
 	backgroundrect.h = 907;
 	backgroundrect.w = 609;
 
@@ -156,25 +174,25 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
 	if (bodyA != NULL && bodyB != NULL)
 	{
-		if (bodyA == balls && bodyB == bouncer1 || bodyA == bouncer1 && bodyB == balls)
+		if (bodyA == balls && bodyB == bumper1 || bodyA == bumper1 && bodyB == balls)
 		{
 			App->audio->PlayFx(bonus_fx);
 			score += 10;
 		}
 
-		if (bodyA == balls && bodyB == bouncer2 || bodyA == bouncer2 && bodyB == balls)
+		if (bodyA == balls && bodyB == bumper2 || bodyA == bumper2 && bodyB == balls)
 		{
 			App->audio->PlayFx(bonus_fx);
 			score += 10;
 		}
 
-		if (bodyA == balls && bodyB == bouncer3 || bodyA == bouncer3 && bodyB == balls)
+		if (bodyA == balls && bodyB == bumper3 || bodyA == bumper3 && bodyB == balls)
 		{
 			App->audio->PlayFx(bonus_fx);
 			score += 10;
 		}
 
-		if (bodyA == balls && bodyB == bouncer4 || bodyA == bouncer4 && bodyB == balls)
+		if (bodyA == balls && bodyB == bumper4 || bodyA == bumper4 && bodyB == balls)
 		{
 			App->audio->PlayFx(bonus_fx);
 			score += 10;
