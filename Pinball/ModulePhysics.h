@@ -68,7 +68,12 @@ public:
 	//pinball phisical contour
 	p2List<PhysBody*> out;
 	p2List<PhysBody*> r_inline;
-	p2List<PhysBody*> l_inline;
+	//p2List<PhysBody*> l_inline;
+	p2List<PhysBody*> l_triangle;
+	p2List<PhysBody*> r_triangle;
+	p2List<PhysBody*> t_triangle;
+	p2List<PhysBody*> l_base;
+	p2List<PhysBody*> r_base;
 
 	PhysBody* balls;
 	PhysBody* Lflipper;
@@ -79,14 +84,14 @@ public:
 	PhysBody* bumper3;
 	PhysBody* bumper4;
 	PhysBody* pond;
-	PhysBody* l_triangle;
-	PhysBody* r_triangle;
-	PhysBody* t_triangle;
 	PhysBody* l_hearth;
 	PhysBody* r_hearth;
 	PhysBody* l_flipper_base1;
-	//b2Vec2 l_flipper_base2;
 	PhysBody* r_flipper_base1;
+	//PhysBody* l_triangle;
+	//PhysBody* r_triangle;
+	//PhysBody* t_triangle;
+	//b2Vec2 l_flipper_base2;
 	//b2Vec2 r_flipper_base2;
 
 

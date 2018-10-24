@@ -130,77 +130,92 @@ bool ModulePhysics::Start()
 	261, 875,
 	261, 903
 	};
+	
+	int right_inline[54] = {
+	446, 434,
+	491, 457,
+	537, 386,
+	557, 324,
+	560, 271,
+	554, 213,
+	528, 165,
+	505, 127,
+	464, 85,
+	433, 67,
+	410, 60,
+	395, 71,
+	381, 98,
+	384, 117,
+	385, 146,
+	398, 161,
+	424, 168,
+	453, 177,
+	470, 183,
+	482, 202,
+	474, 248,
+	459, 295,
+	425, 351,
+	390, 387,
+	399, 393,
+	407, 403,
+	447, 434
+	};
+
+	int left_base[18] = {
+	135, 729,
+	156, 746,
+	196, 771,
+	213, 781,
+	203, 803,
+	179, 790,
+	153, 772,
+	137, 758,
+	129, 746
+	};
+
+	int left_triangle[8] = {
+	175, 626,
+	175, 708,
+	221, 730,
+	178, 625
+	};
+
+	int right_base[16] = {
+	507, 728,
+	486, 747,
+	460, 764,
+	432, 780,
+	443, 803,
+	475, 782,
+	497, 767,
+	514, 744
+	};
+
+
+	int right_triangle[8] = {
+	469, 625,
+	470, 711,
+	423, 732,
+	465, 626
+	};
+
+	int top_triangle[8] = {
+	237, 320,
+	280, 309,
+	318, 346,
+	237, 321
+	};
 
 	out.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), outline, 186));
-
-	int right_inline[54] = {
-		446, 434,
-		491, 457,
-		537, 386,
-		557, 324,
-		560, 271,
-		554, 213,
-		528, 165,
-		505, 127,
-		464, 85,
-		433, 67,
-		410, 60,
-		395, 71,
-		381, 98,
-		384, 117,
-		385, 146,
-		398, 161,
-		424, 168,
-		453, 177,
-		470, 183,
-		482, 202,
-		474, 248,
-		459, 295,
-		425, 351,
-		390, 387,
-		399, 393,
-		407, 403,
-		447, 434
-	};
 	r_inline.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_inline, 54));
+	r_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_base, 16));
+	l_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_base, 18));
+	r_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_triangle, 8));
+	l_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_triangle, 8));
+	t_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), top_triangle, 8));
+	
 
-	/*int left_inline[66] = {
-		65, 906,
-		62, 510,
-		74, 358,
-		99, 261,
-		134, 204,
-		171, 160,
-		201, 132,
-		231, 118,
-		247, 111,
-		256, 130,
-		250, 152,
-		233, 167,
-		187, 182,
-		154, 192,
-		140, 198,
-		94, 278,
-		81, 354,
-		128, 385,
-		134, 407,
-		133, 441,
-		133, 490,
-		133, 514,
-		125, 525,
-		109, 538,
-		95, 551,
-		83, 579,
-		79, 609,
-		81, 624,
-		84, 854,
-		125, 854,
-		126, 802,
-		265, 878,
-		265, 905
-	};
-
-	l_inline.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_inline, 66));*/
+	
 
 	
 	bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
@@ -215,26 +230,6 @@ bool ModulePhysics::Start()
 	l_flipper_base1 = App->physics->CreateRectangleStatic(126, 684, 13, 120);
 	r_flipper_base1 = App->physics->CreateRectangleStatic(517, 684, 13, 120);
 
-	b2Vec2 l_flipper_base2[4]; 
-		l_flipper_base2[0].Set(135.0f,723.0f);
-		l_flipper_base2[1].Set(224.0f,787.0f);
-		l_flipper_base2[2].Set(214.0f,810.0f);
-		l_flipper_base2[3].Set(126.0f,743.0f);
-
-		int32 count = 4;
-		b2PolygonShape polygon_b1;
-		polygon_b1.Set(l_flipper_base2, count);
-
-	/*b2Vec2 r_flipper_base2[4];
-		r_flipper_base2[0].Set();
-		r_flipper_base2[1].Set();
-		r_flipper_base2[2].Set();
-		r_flipper_base2[3].Set();
-
-		int32 count = 4;
-		b2PolygonShape polygon_b2;
-		polygon_b2.Set(r_flipper_base2, count);
-		*/
 	
 
 	
