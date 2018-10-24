@@ -40,6 +40,11 @@ bool ModuleSceneIntro::Start()
 	//lives = 3;
 	//defining the phisical body of the map
 	// Pivot 0, 0
+
+	//piston/launcher
+	piston = App->physics->CreateRectangle(19, 660, 21, 26);
+	piston->body->SetFixedRotation(true);
+	
 	
 	SpawnBall();
 
@@ -93,8 +98,20 @@ update_status ModuleSceneIntro::Update()
 			App->physics->fbody2->ApplyTorque(250.0, false);
 			App->physics->fbody3->ApplyTorque(250.0, false);
 		}
+			
 	}
 
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
+	{
+		mouse_joint->SetTarget({ PIXEL_TO_METERS(16), PIXEL_TO_METERS(660) });
+		mouse_joint->SetFrequency(1.0f);
+	}
+	else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+	{
+		
+		mouse_joint->SetTarget({ PIXEL_TO_METERS(16), PIXEL_TO_METERS(645) });
+		mouse_joint->SetFrequency(150.0f);
+	}
 
 	// All draw functions ------------------------------------------------------
 	p2List_item<PhysBody*>* c = circles.getFirst();
