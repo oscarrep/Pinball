@@ -16,7 +16,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
-	void SpawnBall();
+	PhysBody* SpawnBall();
 	void PlayerDeath();
 	////void CreateFlipperJoint();
 
@@ -41,6 +41,8 @@ public:
 	PhysBody* bouncer3;
 	PhysBody* bouncer4;
 	PhysBody* bouncer5;
+	PhysBody* bouncer6;
+	
 
 	//contour
 	p2List<PhysBody*> out;
@@ -57,12 +59,13 @@ public:
 	//Textures 
 	SDL_Texture* piston;
 	SDL_Texture* background;
+	SDL_Texture* scorebox;
 	SDL_Texture* ball;
 	SDL_Texture* LflipperTexture;
 	SDL_Texture* RflipperTexture;
 	SDL_Texture* TopflipperTexture;
 	SDL_Rect backgroundrect;
-
+	SDL_Rect scoreboxrect;
 	//handout elements
 	SDL_Texture* circle;
 	SDL_Texture* box;
@@ -70,10 +73,13 @@ public:
 	//
 
 	//values needed for the game
-	int lives;
-	int score;
+	int ballposx,ballposy;
+	int lflipposx, lflipposy;
+	int lives=3;
+	int score=0;
+	int highscore = 0;
 	bool defeat = false;
-	iPoint ballpos;
+
 
 	uint bonus_fx;
 };

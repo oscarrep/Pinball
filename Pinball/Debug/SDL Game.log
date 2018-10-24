@@ -1,19 +1,2 @@
-﻿  Application.cpp
-  ModulePhysics.cpp
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(327): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(328): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(352): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(353): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(397): warning C4018: '<': signed/unsigned mismatch
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(744): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(745): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\adell\documents\github\pinball\pinball\modulephysics.cpp(751): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
-  ModuleSceneIntro.cpp
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.h(45): error C2143: syntax error: missing ';' before '*'
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.h(45): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.h(45): error C2238: unexpected token(s) preceding ';'
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(106): error C2065: 'mouse_joint': undeclared identifier
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(107): error C2065: 'mouse_joint': undeclared identifier
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(112): error C2065: 'mouse_joint': undeclared identifier
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(113): error C2065: 'mouse_joint': undeclared identifier
-  Generating Code...
+﻿  ModuleSceneIntro.cpp
+  SDL Game.vcxproj -> C:\Users\adell\Documents\GitHub\Pinball\Pinball\Debug\2D Physics - class 4.exe

@@ -25,10 +25,13 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	ball = App->textures->Load("pinball/pinball_ball.png");
-
 	rick = App->textures->Load("pinball/rick_head.png");
 	background = App->textures->Load("pinball/background2.png");
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+	scorebox = App->textures->Load("pinball/scoreboard.png");
+	LflipperTexture = App->textures->Load("pinball/Lflipper.png");
+	RflipperTexture = App->textures->Load("pinball/Rflipper.png");
+	TopflipperTexture = App->textures->Load("pinball/Lflipper.png");
 
 	App->physics->CreateLFlipper();
 	App->physics->CreateRFlipper();
@@ -38,10 +41,11 @@ bool ModuleSceneIntro::Start()
 	backgroundrect.h = 907;
 	backgroundrect.w = 609;
 
-	//lives = 3;
-	//defining the phisical body of the map
-	// Pivot 0, 0
-
+	scoreboxrect.h = 110;
+	scoreboxrect.w = 270;
+	
+	lives = 6;
+	
 	SpawnBall();
 
 	return ret;
@@ -60,8 +64,19 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update()
 {
-	App->renderer->Blit(background, 0, 0, &backgroundrect);
+	balls->GetPosition(ballposx,ballposy);
+	SDL_Rect ballposition;
+	ballposition.w = 15;
+	ballposition.h = 15;
+	ballposition.x = ballposx;
+	ballposition.y = ballposy;
 
+	App->renderer->Blit(background, 0, 0, &backgroundrect);
+	App->renderer->Blit(scorebox, 0, 0 , &scoreboxrect);
+	App->renderer->Blit(ball, ballposx, ballposy, &ballposition);
+	//App->renderer->Blit(LflipperTexture, , , &Lflipper);
+	//App->renderer->Blit(background, , , &Rflipper);
+	
 	// Debug spawn ball
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
@@ -129,8 +144,8 @@ update_status ModuleSceneIntro::Update()
 		c = c->next;
 	}
 
-	// Player death
-	if (ballpos.y > 907) {
+	// Player death / lost ball
+	if (ballposy >= 907) {
 		PlayerDeath();
 	}
 
@@ -139,35 +154,56 @@ update_status ModuleSceneIntro::Update()
 
 void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
-	int x, y;
-	//App->audio->PlayFx(bonus_fx);
+	if (bodyA != NULL && bodyB != NULL)
+	{
+		if (bodyA == balls && bodyB == bouncer1 || bodyA == bouncer1 && bodyB == balls)
+		{
+			App->audio->PlayFx(bonus_fx);
+			score += 10;
+		}
+
+		if (bodyA == balls && bodyB == bouncer2 || bodyA == bouncer2 && bodyB == balls)
+		{
+			App->audio->PlayFx(bonus_fx);
+			score += 10;
+		}
+
+		if (bodyA == balls && bodyB == bouncer3 || bodyA == bouncer3 && bodyB == balls)
+		{
+			App->audio->PlayFx(bonus_fx);
+			score += 10;
+		}
+
+		if (bodyA == balls && bodyB == bouncer4 || bodyA == bouncer4 && bodyB == balls)
+		{
+			App->audio->PlayFx(bonus_fx);
+			score += 10;
+		}
+
+	}
+
+	
 }
 
-
-
-void ModuleSceneIntro::SpawnBall()
+PhysBody* ModuleSceneIntro::SpawnBall()
 {
 	balls = App->physics->CreateCircle(44, 791, 15);
-
+	return balls;
 }
 
 
 
 void ModuleSceneIntro::PlayerDeath() {
-
+	   
 	App->physics->world->DestroyBody(balls->body);
 
 	lives = lives - 1;
-
-	SpawnBall();
-
-	/*if (lives <= 0) {
+	
+	if (lives > 0) {
+		SpawnBall();
+	}
+	if (lives <= 0) {
 	defeat = true;
 	}
-
-	if (defeat == true) {
-	//GameOver();
-	}*/
-
-
+	   	 
 }
