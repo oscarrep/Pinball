@@ -3,6 +3,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePhysics.h"
+#include "ModuleSceneIntro.h"
 #include "p2Point.h"
 #include "math.h"
 
@@ -213,11 +214,7 @@ bool ModulePhysics::Start()
 	r_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_triangle, 8));
 	l_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_triangle, 8));
 	t_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), top_triangle, 8));
-	
-
-	
-
-	
+		
 	bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
 	bumper2 = App->physics->CreateCircleStatic(280, 300, 25);
 	bumper3 = App->physics->CreateCircleStatic(372, 249, 25);
@@ -229,10 +226,16 @@ bool ModulePhysics::Start()
 
 	l_flipper_base1 = App->physics->CreateRectangleStatic(126, 684, 13, 120);
 	r_flipper_base1 = App->physics->CreateRectangleStatic(517, 684, 13, 120);
-
 	
+	//piston joint
+	b2MouseJointDef def;
+	def.bodyA = App->physics->ground;
+	def.bodyB = piston->body;
+	def.target = { PIXEL_TO_METERS(19), PIXEL_TO_METERS(660) };
+	def.dampingRatio = 1.0f;
+	def.maxForce = 10000.0f * piston->body->GetMass();
+	mouse_joint = (b2MouseJoint*)App->physics->world->CreateJoint(&def);
 
-	
 	return true;
 }
 
@@ -351,12 +354,6 @@ PhysBody* ModulePhysics::CreateRectangleStatic(int x, int y, int width, int heig
 
 	return pbody;
 }
-
-
-/*PhysBody* ModulePhysics::CreatePiston()
-{
-	return piston;
-}*/
 
 PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height, Module *listener)
 {

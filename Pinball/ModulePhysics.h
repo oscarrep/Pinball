@@ -56,8 +56,7 @@ public:
 	b2Body* fbody2;
 	b2Body* fbody3;
 	b2Body* fbody4;
-
-	PhysBody* CreatePiston();
+	
 
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
@@ -68,7 +67,6 @@ public:
 	//pinball phisical contour
 	p2List<PhysBody*> out;
 	p2List<PhysBody*> r_inline;
-	//p2List<PhysBody*> l_inline;
 	p2List<PhysBody*> l_triangle;
 	p2List<PhysBody*> r_triangle;
 	p2List<PhysBody*> t_triangle;
@@ -93,6 +91,7 @@ public:
 	//PhysBody* t_triangle;
 	//b2Vec2 l_flipper_base2;
 	//b2Vec2 r_flipper_base2;
+	//p2List<PhysBody*> l_inline;
 
 
 	b2World* world;
@@ -101,6 +100,7 @@ private:
 
 	bool debug;
 	b2Body* ground;
+	PhysBody* piston;
 
 	// Mouse joint
 	b2MouseJoint* mouse_joint;
