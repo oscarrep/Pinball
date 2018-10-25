@@ -78,6 +78,7 @@ public:
 	SDL_Texture* LflipperTexture;
 	SDL_Texture* RflipperTexture;
 	SDL_Texture* TopflipperTexture;
+	SDL_Texture* animations;
 	SDL_Rect backgroundrect;
 	SDL_Rect scoreboxrect;
 	SDL_Rect ballpos;
@@ -117,11 +118,12 @@ public:
 	SDL_Rect life2;
 	SDL_Rect life3;
 	SDL_Rect life4;
-
+	SDL_Rect LflipperRect;
+	SDL_Rect RflipperRect;
+	SDL_Rect TflipperRect;
 
 	//values needed for the game
 	int ballposx,ballposy;
-	int lflipposx, lflipposy;
 	int lives=3;
 	int score=0;
 	int scoreaux;

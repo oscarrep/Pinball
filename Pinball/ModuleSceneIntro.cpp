@@ -141,8 +141,7 @@ update_status ModuleSceneIntro::Update()
 	App->renderer->Blit(background, 0, 0, &backgroundrect);
 	App->renderer->Blit(scorebox, 0, 0 , &scoreboxrect);
 	App->renderer->Blit(ball, ballposx, ballposy, &ballposition);
-	//App->renderer->Blit(LflipperTexture, , , &Lflipper);
-	//App->renderer->Blit(background, , , &Rflipper);
+	//App->renderer->Blit(background, App->player->LflipperPos.x, App->player->LflipperPos.x, &LflipperRect, 1.0f, App->physics->Lflipper->GetRotation());
 	
 	// Debug spawn ball
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
@@ -181,7 +180,7 @@ update_status ModuleSceneIntro::Update()
 	}
 
 	// Piston input
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
 	{
 		App->physics->fbody4->ApplyForce(b2Vec2(0, 250), App->physics->fbody4->GetLocalCenter(), true);
 	}
