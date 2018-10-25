@@ -392,6 +392,31 @@ PhysBody* ModulePhysics::CreateRectangleStatic(int x, int y, int width, int heig
 	return pbody;
 }
 
+PhysBody* ModulePhysics::CreateCircleSensor(int x, int y, int radius)
+
+{
+	b2BodyDef body;
+	body.type = b2_staticBody;
+	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+	b2Body* b = world->CreateBody(&body);
+	b->SetBullet(true);
+
+	b2CircleShape circle;
+	circle.m_radius = PIXEL_TO_METERS(radius);
+	b2FixtureDef fixture;
+	fixture.shape = &circle;
+	fixture.density = 1.0f;
+	fixture.isSensor = true;
+
+	b->CreateFixture(&fixture);
+	PhysBody* pbody = new PhysBody();
+	pbody->body = b;
+	b->SetUserData(pbody);
+	pbody->width = pbody->height = radius;
+
+	return pbody;
+}
+
 PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height, Module *listener)
 {
 	b2BodyDef body;
@@ -457,7 +482,7 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
 b2Body* ModulePhysics::CreateRFlipper() {
 	b2BodyDef flipperBodyDef;
 	flipperBodyDef.type = b2_dynamicBody;
-	flipperBodyDef.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(803));
+	flipperBodyDef.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(805));
 
 	fbody = world->CreateBody(&flipperBodyDef);
 
@@ -470,7 +495,7 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	fbody->CreateFixture(&flipperFixture);
 
 	b2BodyDef flipperCircleDef;
-	flipperCircleDef.position.Set(PIXEL_TO_METERS(410), PIXEL_TO_METERS(803));
+	flipperCircleDef.position.Set(PIXEL_TO_METERS(410), PIXEL_TO_METERS(805));
 	flipperCircleDef.type = b2_staticBody;
 
 	b2Body* circleBody = world->CreateBody(&flipperCircleDef);
@@ -500,7 +525,7 @@ b2Body* ModulePhysics::CreateRFlipper() {
 b2Body* ModulePhysics::CreateLFlipper() {
 	b2BodyDef flipperBodyDef2;
 	flipperBodyDef2.type = b2_dynamicBody;
-	flipperBodyDef2.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(803));
+	flipperBodyDef2.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(805));
 
 	fbody2 = world->CreateBody(&flipperBodyDef2);
 
@@ -543,7 +568,7 @@ b2Body* ModulePhysics::CreateLFlipper() {
 b2Body* ModulePhysics::CreateUpperFlipper() {
 	b2BodyDef flipperBodyDef3;
 	flipperBodyDef3.type = b2_dynamicBody;
-	flipperBodyDef3.position.Set(PIXEL_TO_METERS(99), PIXEL_TO_METERS(345));
+	flipperBodyDef3.position.Set(PIXEL_TO_METERS(105), PIXEL_TO_METERS(345));
 
 	fbody3 = world->CreateBody(&flipperBodyDef3);
 
@@ -556,7 +581,7 @@ b2Body* ModulePhysics::CreateUpperFlipper() {
 	fbody3->CreateFixture(&flipperFixture3);
 
 	b2BodyDef flipperCircleDef3;
-	flipperCircleDef3.position.Set(PIXEL_TO_METERS(99), PIXEL_TO_METERS(345));
+	flipperCircleDef3.position.Set(PIXEL_TO_METERS(105), PIXEL_TO_METERS(345));
 	flipperCircleDef3.type = b2_staticBody;
 
 	b2Body* circleBody3 = world->CreateBody(&flipperCircleDef3);

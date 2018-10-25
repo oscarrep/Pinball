@@ -35,5 +35,6 @@
 
 ## Credits
 
--Music from:
--Fx from:
+-Music from: https://www.youtube.com/watch?v=HkMpFN-W8dQ
+-Fx from: https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack
+	http://www.orangefreesounds.com/pinball-buttons/

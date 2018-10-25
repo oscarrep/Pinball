@@ -27,11 +27,18 @@ bool ModuleSceneIntro::Start()
 	ball = App->textures->Load("pinball/pinball_ball.png");
 	rick = App->textures->Load("pinball/rick_head.png");
 	background = App->textures->Load("pinball/background2.png");
-	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
 	scorebox = App->textures->Load("pinball/scoreboard.png");
 	LflipperTexture = App->textures->Load("pinball/Lflipper.png");
 	RflipperTexture = App->textures->Load("pinball/Rflipper.png");
 	TopflipperTexture = App->textures->Load("pinball/Lflipper.png");
+
+	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+	flipper_fx = App->audio->LoadFx("pinball/fx/fx-flipper.ogg");
+	heart_fx = App->audio->LoadFx("pinball/fx/fx-heart.ogg");
+
+	heartSensor1 = App->physics->CreateCircleSensor(279, 129, 15);
+	heartSensor2 = App->physics->CreateCircleSensor(322, 129, 15);
+	heartSensor3 = App->physics->CreateCircleSensor(364, 129, 15);
 
 	//number sprites
 	/*n0 = App->textures->Load("pinball/0.png");
@@ -130,6 +137,7 @@ update_status ModuleSceneIntro::Update()
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
 		App->physics->fbody->ApplyTorque(250.0, true);
+		App->audio->PlayFx(flipper_fx);
 	}
 	else
 	{
@@ -143,6 +151,7 @@ update_status ModuleSceneIntro::Update()
 	{
 		App->physics->fbody2->ApplyTorque(-250.0, true);
 		App->physics->fbody3->ApplyTorque(-250.0, true);
+		App->audio->PlayFx(flipper_fx);
 	}
 	else
 	{
@@ -487,10 +496,35 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			score += 30;
 		}
 
-	}
+		if (bodyB == heartSensor1)
+		{
+			App->audio->PlayFx(heart_fx);
+			if (heart1 = false)
+			{
+				heart1 = true;
+			}
+		}
 
-	
+		if (bodyB == heartSensor2)
+		{
+			App->audio->PlayFx(heart_fx);
+			if (heart2 = false)
+			{
+				heart2 = true;
+			}
+		}
+
+		if (bodyB == heartSensor3)
+		{
+			App->audio->PlayFx(heart_fx);
+			if (heart3 = false)
+			{
+				heart3 = true;
+			}
+		}
+	}
 }
+
 
 PhysBody* ModuleSceneIntro::SpawnBall()
 {

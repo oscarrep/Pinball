@@ -47,6 +47,11 @@ public:
 	PhysBody* Leftboost;
 	PhysBody* Rightboost;
 
+	PhysBody* sensor;
+	PhysBody* heartSensor1;
+	PhysBody* heartSensor2;
+	PhysBody* heartSensor3;
+
 	//contour
 	p2List<PhysBody*> out;
 	p2List<PhysBody*> r_inline;
@@ -120,5 +125,11 @@ public:
 	bool defeat = false;
 
 
+	uint flipper_fx;
+	uint heart_fx;
 	uint bonus_fx;
+
+	bool heart1 = false;
+	bool heart2 = false;
+	bool heart3 = false;
 };

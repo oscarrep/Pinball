@@ -47,6 +47,7 @@ public:
 	PhysBody* CreateRectangle(int x, int y, int width, int height);
 	PhysBody* CreateRectangleStatic(int x, int y, int width, int height);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, Module* listener);
+	PhysBody* CreateCircleSensor(int x, int y, int radius);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
 
 	b2Body* CreateLFlipper();
