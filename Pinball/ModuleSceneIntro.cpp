@@ -32,7 +32,7 @@ bool ModuleSceneIntro::Start()
 	RflipperTexture = App->textures->Load("pinball/Rflipper.png");
 	TopflipperTexture = App->textures->Load("pinball/Lflipper.png");
 
-	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+	bonus_fx = App->audio->LoadFx("pinball/fx/fx-bonus.ogg");
 	flipper_fx = App->audio->LoadFx("pinball/fx/fx-flipper.ogg");
 	heart_fx = App->audio->LoadFx("pinball/fx/fx-heart.ogg");
 
@@ -60,18 +60,22 @@ bool ModuleSceneIntro::Start()
 	App->physics->CreatePiston();
 
 	bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
+	bumperSensor1 = App->physics->CreateCircleSensor(295, 220, 25);
 	bumper1->body->GetFixtureList()->SetDensity(10.0f);
 	bumper1->body->GetFixtureList()->SetRestitution(1.5f);
 
 	bumper2 = App->physics->CreateCircleStatic(280, 300, 25);
+	bumperSensor2 = App->physics->CreateCircleSensor(280, 300, 25);
 	bumper2->body->GetFixtureList()->SetDensity(10.0f);
 	bumper2->body->GetFixtureList()->SetRestitution(1.5f);
 
 	bumper3 = App->physics->CreateCircleStatic(372, 249, 25);
+	bumperSensor3 = App->physics->CreateCircleSensor(372, 249, 25);
 	bumper3->body->GetFixtureList()->SetDensity(10.0f);
 	bumper3->body->GetFixtureList()->SetRestitution(1.5f);
 
 	bumper4 = App->physics->CreateCircleStatic(380, 410, 25);
+	bumperSensor4 = App->physics->CreateCircleSensor(380, 410, 25);
 	bumper4->body->GetFixtureList()->SetDensity(10.0f);
 	bumper4->body->GetFixtureList()->SetRestitution(1.5f);
 
@@ -523,6 +527,31 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			{
 				heart3 = true;
 			}
+		}
+
+		if (bodyB == bumperSensor1)
+		{
+			App->audio->PlayFx(bonus_fx);
+		}
+
+		if (bodyB == bumperSensor2)
+		{
+			App->audio->PlayFx(bonus_fx);
+		}
+
+		if (bodyB == bumperSensor3)
+		{
+			App->audio->PlayFx(bonus_fx);
+		}
+
+		if (bodyB == bumperSensor4)
+		{
+			App->audio->PlayFx(bonus_fx);
+		}
+
+		if (bodyB == bumperSensor5)
+		{
+			App->audio->PlayFx(bonus_fx);
 		}
 	}
 }

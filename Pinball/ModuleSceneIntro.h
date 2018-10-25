@@ -51,6 +51,11 @@ public:
 	PhysBody* heartSensor1;
 	PhysBody* heartSensor2;
 	PhysBody* heartSensor3;
+	PhysBody* bumperSensor1;
+	PhysBody* bumperSensor2;
+	PhysBody* bumperSensor3;
+	PhysBody* bumperSensor4;
+	PhysBody* bumperSensor5;
 
 	//contour
 	p2List<PhysBody*> out;
@@ -133,4 +138,9 @@ public:
 	bool heart1 = false;
 	bool heart2 = false;
 	bool heart3 = false;
+	bool bumper_fx1 = false;
+	bool bumper_fx2 = false;
+	bool bumper_fx3 = false;
+	bool bumper_fx4 = false;
+	bool bumper_fx5 = false;
 };
