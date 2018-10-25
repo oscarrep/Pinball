@@ -667,7 +667,7 @@ update_status ModulePhysics::PostUpdate()
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
 
-	if (!debug)
+	if (debug)
 		return UPDATE_CONTINUE;
 
 	// Implement a simple mouse joint when a body is clicked for debug purposes
