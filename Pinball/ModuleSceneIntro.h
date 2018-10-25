@@ -80,6 +80,7 @@ public:
 	SDL_Texture* TopflipperTexture;
 	SDL_Rect backgroundrect;
 	SDL_Rect scoreboxrect;
+	SDL_Rect ballpos;
 
 	//handout elements
 	SDL_Texture* circle;

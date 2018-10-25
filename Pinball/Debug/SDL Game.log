@@ -1,5 +1,6 @@
 ﻿  ModuleSceneIntro.cpp
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(321): warning C4553: '==': result of expression not used; did you intend '='?
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(322): warning C4553: '==': result of expression not used; did you intend '='?
-c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(323): warning C4553: '==': result of expression not used; did you intend '='?
+c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(327): warning C4553: '==': result of expression not used; did you intend '='?
+c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(328): warning C4553: '==': result of expression not used; did you intend '='?
+c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(329): warning C4553: '==': result of expression not used; did you intend '='?
+c:\users\adell\documents\github\pinball\pinball\modulesceneintro.cpp(381): warning C4551: function call missing argument list
   SDL Game.vcxproj -> C:\Users\adell\Documents\GitHub\Pinball\Pinball\Debug\2D Physics - class 4.exe

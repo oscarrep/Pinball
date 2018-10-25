@@ -132,9 +132,15 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update()
 {
+	balls->GetPosition(ballposx, ballposy);
+	SDL_Rect ballposition;
+	ballposition.w = 15;
+	ballposition.h = 15;
+	ballposition.x = ballposx;
+	ballposition.y = ballposy;
 	App->renderer->Blit(background, 0, 0, &backgroundrect);
 	App->renderer->Blit(scorebox, 0, 0 , &scoreboxrect);
-	//App->renderer->Blit(ball, ballposx, ballposy, &balls);
+	App->renderer->Blit(ball, ballposx, ballposy, &ballposition);
 	//App->renderer->Blit(LflipperTexture, , , &Lflipper);
 	//App->renderer->Blit(background, , , &Rflipper);
 	
@@ -371,7 +377,8 @@ void ModuleSceneIntro::PlayerDeath() {
 		SpawnBall();
 	}
 	if (lives <= 0) {
-	defeat = true;
+		defeat = true;
+		
 	}
 	   	 
 }
