@@ -218,7 +218,6 @@ update_status ModuleSceneIntro::Update()
 		}
 	}
 
-
 	// All draw functions ------------------------------------------------------
 	p2List_item<PhysBody*>* c = circles.getFirst();
 
@@ -287,12 +286,17 @@ update_status ModuleSceneIntro::PostUpdate()
 	// Debug spawn ball
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && !joint)
 	{
-		/*circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 13));
-		circles.getLast()->data->listener = this;*/
 		App->physics->world->DestroyBody(balls->body);
 		balls = App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 13);
 	}
 	
+	// Restart
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+	{
+		App->physics->world->DestroyBody(balls->body);
+		balls = App->physics->CreateCircle(44, 791, 13);
+		score = 0;
+	}
 	return UPDATE_CONTINUE;
 }
 
