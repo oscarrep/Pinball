@@ -552,7 +552,7 @@ b2Body* ModulePhysics::CreateUpperFlipper() {
 
 	b2FixtureDef flipperFixture3;
 	flipperFixture3.shape = &box3;
-	flipperFixture3.density = 2;
+	flipperFixture3.density = 4;
 	fbody3->CreateFixture(&flipperFixture3);
 
 	b2BodyDef flipperCircleDef3;

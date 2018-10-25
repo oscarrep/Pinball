@@ -61,11 +61,11 @@ bool ModuleSceneIntro::Start()
 	tree->body->GetFixtureList()->SetRestitution(1.5f);
 
 	Leftboost = App->physics->CreateRectangleStatic(105, 850, 30, 8);
-	Leftboost->body->GetFixtureList()->SetDensity(15.0f);
+	Leftboost->body->GetFixtureList()->SetDensity(50.0f);
 	Leftboost->body->GetFixtureList()->SetRestitution(1.5f);
 
 	Rightboost = App->physics->CreateRectangleStatic(537, 850, 30, 8);
-	Rightboost->body->GetFixtureList()->SetDensity(15.0f);
+	Rightboost->body->GetFixtureList()->SetDensity(50.0f);
 	Rightboost->body->GetFixtureList()->SetRestitution(1.5f);
 
 	backgroundrect.h = 907;
