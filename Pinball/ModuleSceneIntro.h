@@ -25,7 +25,6 @@ public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> triangles;
-	b2Vec2 body;
 	//p2List<PhysBody*> balls;
 	////p2List<PhysBody*>* Lflipper;
 	////p2List<PhysBody*>* Rflipper;
@@ -127,6 +126,7 @@ public:
 
 	//values needed for the game
 	int ballposx,ballposy;
+	int rx, ry, lx, ly, tx, ty, px, py;
 	int lives=3;
 	int scoreImage;
 	int score=0;

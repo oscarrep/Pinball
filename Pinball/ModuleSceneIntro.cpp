@@ -13,9 +13,10 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 	circle = box = rick = NULL;
 	sensed = false;
 	ball = NULL;
-	TopflipperTexture = nullptr;
-	RflipperTexture = nullptr;
-	LflipperTexture = nullptr;
+	
+	
+
+
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -64,10 +65,10 @@ bool ModuleSceneIntro::Start()
 	n1 = App->textures->Load("pinball/8.png");
 	n1 = App->textures->Load("pinball/9.png");*/
 
-	/*Lflipper->body = */App->physics->CreateLFlipper();
-	/*Rflipper->body = */App->physics->CreateRFlipper();
-	/*Tflipper->body = */App->physics->CreateUpperFlipper();
-	/*pistonBody->body = */App->physics->CreatePiston();
+	/*Lflipper->body = */Lflipper= App->physics->CreateLFlipper();
+	/*Rflipper->body = */Rflipper= App->physics->CreateRFlipper();
+	/*Tflipper->body = */Tflipper =App->physics->CreateUpperFlipper();
+	/*pistonBody->body = */pistonBody=App->physics->CreatePiston();
 
 	bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
 	bumperSensor1 = App->physics->CreateCircleSensor(295, 220, 25);
@@ -163,15 +164,15 @@ update_status ModuleSceneIntro::Update()
 	App->renderer->Blit(background, 0, 0, &backgroundrect);
 	App->renderer->Blit(scorebox, 0, 0 , &scoreboxrect);
 	App->renderer->Blit(ball, ballposx, ballposy, &ballrect);
-
-	left = Lflipper->GetPosition(left.x,left.y);
-	App->renderer->Blit(LflipperTexture, left.x, left.y, NULL, 1.0F, Lflipper->GetRotation());
-	fbody2->GetPosition(tx, ty);
-	App->renderer->Blit(TopflipperTexture, tx, ty, NULL, 1.0F, Tflipper->GetRotation());
+	
+	Lflipper->GetPosition(lx,ly);
+	App->renderer->Blit(LflipperTexture, lx, ly, NULL, 1.0F, Lflipper->GetRotation());
+	Tflipper->GetPosition(tx, ty);
+	App->renderer->Blit(TopflipperTexture, tx,ty, NULL, 1.0F, Tflipper->GetRotation());
 	Rflipper->GetPosition(rx, ry);
 	App->renderer->Blit(RflipperTexture, rx, ry, NULL, 1.0F, Rflipper->GetRotation());
 	pistonBody->GetPosition(px, py);
-	App->renderer->Blit(piston, px, py, NULL, 1.0F, pistonBody->GetRotation());*/
+	App->renderer->Blit(piston, px, py, NULL, 1.0F, pistonBody->GetRotation());
 
 
 	//App->renderer->Blit(LflipperTexture, Lflipperpos.x, Lflipperpos.y, &LflipperRect, 1.0f, Lflipper->GetRotation() );
@@ -181,40 +182,40 @@ update_status ModuleSceneIntro::Update()
 	// Flipper inputs
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
-		App->physics->fbody->ApplyTorque(250.0, true);
+		Rflipper->body->ApplyTorque(250.0, true);
 		App->audio->PlayFx(flipper_fx);
 	}
 	else
 	{
-		if (App->physics->fbody->IsAwake())
+		if (Rflipper->body->IsAwake())
 		{
-			App->physics->fbody->ApplyTorque(-250.0, false);
+			Rflipper->body->ApplyTorque(-250.0, false);
 		}
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
-		App->physics->fbody2->ApplyTorque(-250.0, true);
-		App->physics->fbody3->ApplyTorque(-250.0, true);
+		Lflipper->body->ApplyTorque(-250.0, true);
+		Tflipper->body->ApplyTorque(-250.0, true);
 		App->audio->PlayFx(flipper_fx);
 	}
 	else
 	{
-		if (App->physics->fbody2->IsAwake() && App->physics->fbody3->IsAwake())
+		if (Lflipper->body->IsAwake() && Tflipper->body->IsAwake())
 		{
-			App->physics->fbody2->ApplyTorque(250.0, false);
-			App->physics->fbody3->ApplyTorque(250.0, false);
+			Lflipper->body->ApplyTorque(250.0, false);
+			Tflipper->body->ApplyTorque(250.0, false);
 		}
 	}
 
 	// Piston input
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
 	{
-		App->physics->fbody4->ApplyForce(b2Vec2(0, 250), App->physics->fbody4->GetLocalCenter(), true);
+		pistonBody->body->ApplyForce(b2Vec2(0, 250), pistonBody->body->GetLocalCenter(), true);
 	}
 	else {
-		if (App->physics->fbody4->IsAwake()) {
-			App->physics->fbody4->ApplyForce(b2Vec2(0, -250), App->physics->fbody4->GetLocalCenter(), true);
+		if (pistonBody->body->IsAwake()) {
+			pistonBody->body->ApplyForce(b2Vec2(0, -250), pistonBody->body->GetLocalCenter(), true);
 		}
 	}
 

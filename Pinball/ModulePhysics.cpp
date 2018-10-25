@@ -479,8 +479,8 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
 	return pbody;
 }
 
-b2Body* ModulePhysics::CreateRFlipper() {
-	b2BodyDef flipperBodyDef;
+PhysBody* ModulePhysics::CreateRFlipper() {
+	/*b2BodyDef flipperBodyDef;
 	flipperBodyDef.type = b2_dynamicBody;
 	flipperBodyDef.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(805));
 
@@ -492,7 +492,8 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	b2FixtureDef flipperFixture;
 	flipperFixture.shape = &box;
 	flipperFixture.density = 2;
-	fbody->CreateFixture(&flipperFixture);
+	fbody->CreateFixture(&flipperFixture);*/
+	PhysBody* pbody = CreateRectangle(400,805, 95, 24);
 
 	b2BodyDef flipperCircleDef;
 	flipperCircleDef.position.Set(PIXEL_TO_METERS(410), PIXEL_TO_METERS(805));
@@ -507,7 +508,7 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	circleBody->CreateFixture(&fixture);
 
 	b2RevoluteJointDef flipperJointDef;
-	flipperJointDef.bodyA = fbody;
+	flipperJointDef.bodyA = pbody->body;
 	flipperJointDef.bodyB = circleBody;
 	flipperJointDef.localAnchorA.Set(0.5, 0);
 	flipperJointDef.localAnchorB.Set(0, 0);
@@ -519,11 +520,11 @@ b2Body* ModulePhysics::CreateRFlipper() {
 	flipperJointDef.enableMotor = true;
 	world->CreateJoint(&flipperJointDef);
 
-	return fbody;
+	return pbody;
 }
 
-b2Body* ModulePhysics::CreateLFlipper() {
-	b2BodyDef flipperBodyDef2;
+PhysBody* ModulePhysics::CreateLFlipper() {
+	/*b2BodyDef flipperBodyDef2;
 	flipperBodyDef2.type = b2_dynamicBody;
 	flipperBodyDef2.position.Set(PIXEL_TO_METERS(400), PIXEL_TO_METERS(805));
 
@@ -535,7 +536,8 @@ b2Body* ModulePhysics::CreateLFlipper() {
 	b2FixtureDef flipperFixture2;
 	flipperFixture2.shape = &box2;
 	flipperFixture2.density = 2;
-	fbody2->CreateFixture(&flipperFixture2);
+	fbody2->CreateFixture(&flipperFixture2);*/
+	PhysBody* pbody = CreateRectangle(400, 805, 95,24);
 
 	b2BodyDef flipperCircleDef2;
 	flipperCircleDef2.position.Set(PIXEL_TO_METERS(235), PIXEL_TO_METERS(803));
@@ -550,7 +552,7 @@ b2Body* ModulePhysics::CreateLFlipper() {
 	circleBody2->CreateFixture(&fixture2);
 
 	b2RevoluteJointDef flipperJointDef2;
-	flipperJointDef2.bodyA = fbody2;
+	flipperJointDef2.bodyA = pbody->body;
 	flipperJointDef2.bodyB = circleBody2;
 	flipperJointDef2.localAnchorA.Set(-0.5, 0);
 	flipperJointDef2.localAnchorB.Set(0, 0);
@@ -561,12 +563,12 @@ b2Body* ModulePhysics::CreateLFlipper() {
 	flipperJointDef2.motorSpeed = 5.0;
 	flipperJointDef2.enableMotor = true;
 	world->CreateJoint(&flipperJointDef2);
-
-	return fbody2;
+	
+	return pbody;
 }
 
-b2Body* ModulePhysics::CreateUpperFlipper() {
-	b2BodyDef flipperBodyDef3;
+PhysBody* ModulePhysics::CreateUpperFlipper() {
+	/*b2BodyDef flipperBodyDef3;
 	flipperBodyDef3.type = b2_dynamicBody;
 	flipperBodyDef3.position.Set(PIXEL_TO_METERS(105), PIXEL_TO_METERS(345));
 
@@ -578,7 +580,9 @@ b2Body* ModulePhysics::CreateUpperFlipper() {
 	b2FixtureDef flipperFixture3;
 	flipperFixture3.shape = &box3;
 	flipperFixture3.density = 4;
-	fbody3->CreateFixture(&flipperFixture3);
+	fbody3->CreateFixture(&flipperFixture3);*/
+	PhysBody* pbody = CreateRectangle(105, 345, 85, 24);
+
 
 	b2BodyDef flipperCircleDef3;
 	flipperCircleDef3.position.Set(PIXEL_TO_METERS(105), PIXEL_TO_METERS(345));
@@ -593,7 +597,7 @@ b2Body* ModulePhysics::CreateUpperFlipper() {
 	circleBody3->CreateFixture(&fixture3);
 
 	b2RevoluteJointDef flipperJointDef3;
-	flipperJointDef3.bodyA = fbody3;
+	flipperJointDef3.bodyA =pbody->body;
 	flipperJointDef3.bodyB = circleBody3;
 	flipperJointDef3.localAnchorA.Set(-0.5, 0);
 	flipperJointDef3.localAnchorB.Set(0, 0);
@@ -605,11 +609,12 @@ b2Body* ModulePhysics::CreateUpperFlipper() {
 	flipperJointDef3.enableMotor = true;
 	world->CreateJoint(&flipperJointDef3);
 
-	return fbody2;
+	return pbody;
+
 }
 
-b2Body* ModulePhysics::CreatePiston() {
-	b2BodyDef flipperBodyDef4;
+PhysBody* ModulePhysics::CreatePiston() {
+	/*b2BodyDef flipperBodyDef4;
 	flipperBodyDef4.type = b2_dynamicBody;
 	flipperBodyDef4.position.Set(PIXEL_TO_METERS(40), PIXEL_TO_METERS(900));
 
@@ -621,7 +626,8 @@ b2Body* ModulePhysics::CreatePiston() {
 	b2FixtureDef flipperFixture4;
 	flipperFixture4.shape = &box4;
 	flipperFixture4.density = 0;
-	fbody4->CreateFixture(&flipperFixture4);
+	fbody4->CreateFixture(&flipperFixture4);*/
+	PhysBody* pbody = CreateRectangle(40, 900, 25, 20);
 
 	b2BodyDef quad;
 	quad.position.Set(PIXEL_TO_METERS(40), PIXEL_TO_METERS(905));
@@ -637,7 +643,7 @@ b2Body* ModulePhysics::CreatePiston() {
 
 	b2PrismaticJointDef prismaticJointDef4;
 	prismaticJointDef4.bodyA = quadbody;
-	prismaticJointDef4.bodyB = fbody4;
+	prismaticJointDef4.bodyB = pbody->body;
 	prismaticJointDef4.collideConnected = false;
 	prismaticJointDef4.localAxisA.Set(0, 1);
 	prismaticJointDef4.localAxisA.Normalize();
@@ -651,8 +657,9 @@ b2Body* ModulePhysics::CreatePiston() {
 	prismaticJointDef4.maxMotorForce = 0;
 	prismaticJointDef4.motorSpeed = -200;
 	world->CreateJoint(&prismaticJointDef4);
+	
+	return pbody;
 
-	return fbody4;
 }
 
 update_status ModulePhysics::PostUpdate()

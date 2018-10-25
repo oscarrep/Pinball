@@ -50,10 +50,10 @@ public:
 	PhysBody* CreateCircleSensor(int x, int y, int radius);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
 
-	b2Body* CreateLFlipper();
-	b2Body* CreateRFlipper();
-	b2Body* CreateUpperFlipper();
-	b2Body* CreatePiston();
+	PhysBody* CreateLFlipper();
+	PhysBody* CreateRFlipper();
+	PhysBody* CreateUpperFlipper();
+	PhysBody* CreatePiston();
 	b2Body* fbody;
 	b2Body* fbody2;
 	b2Body* fbody3;
