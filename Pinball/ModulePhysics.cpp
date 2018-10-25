@@ -267,8 +267,8 @@ bool ModulePhysics::Start()
 	l_hearth = App->physics->CreateRectangleStatic(300, 130, 13, 38);
 	r_hearth = App->physics->CreateRectangleStatic(344, 130, 13, 38);
 
-	l_flipper_base1 = App->physics->CreateRectangleStatic(126, 684, 13, 120);
-	r_flipper_base1 = App->physics->CreateRectangleStatic(517, 684, 13, 120);
+	l_flipper_base1 = App->physics->CreateRectangleStatic(126, 684, 13, 105);
+	r_flipper_base1 = App->physics->CreateRectangleStatic(517, 684, 13, 105);
 
 
 

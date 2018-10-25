@@ -126,6 +126,7 @@ public:
 
 	//values needed for the game
 	int ballposx,ballposy;
+	int lx, ly, tx, ty, rx, ry, px, py;
 	int lives=3;
 	int scoreImage;
 	int score=0;

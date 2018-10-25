@@ -13,6 +13,9 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 	circle = box = rick = NULL;
 	sensed = false;
 	ball = NULL;
+	TopflipperTexture = nullptr;
+	RflipperTexture = nullptr;
+	LflipperTexture = nullptr;
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -32,6 +35,7 @@ bool ModuleSceneIntro::Start()
 	LflipperTexture = App->textures->Load("pinball/Lflipper.png");
 	RflipperTexture = App->textures->Load("pinball/Rflipper.png");
 	TopflipperTexture = App->textures->Load("pinball/Lflipper.png");
+	piston = App->textures->Load("pinball/piston.png");
 	scoreImage = App->fonts->Load("pinball/numbers.png","1234567890", 1);
 
 	bonus_fx = App->audio->LoadFx("pinball/fx/fx-bonus.ogg");
@@ -160,6 +164,16 @@ update_status ModuleSceneIntro::Update()
 	App->renderer->Blit(scorebox, 0, 0 , &scoreboxrect);
 	App->renderer->Blit(ball, ballposx, ballposy, &ballrect);
 
+	/*Lflipper->GetPosition(lx,ly);
+	App->renderer->Blit(LflipperTexture, lx, ly, NULL, 1.0F, Lflipper->GetRotation());
+	Tflipper->GetPosition(tx, ty);
+	App->renderer->Blit(TopflipperTexture, tx, ty, NULL, 1.0F, Tflipper->GetRotation());
+	Rflipper->GetPosition(rx, ry);
+	App->renderer->Blit(RflipperTexture, rx, ry, NULL, 1.0F, Rflipper->GetRotation());
+	pistonBody->GetPosition(px, py);
+	App->renderer->Blit(piston, px, py, NULL, 1.0F, pistonBody->GetRotation());*/
+
+
 	//App->renderer->Blit(LflipperTexture, Lflipperpos.x, Lflipperpos.y, &LflipperRect, 1.0f, Lflipper->GetRotation() );
 
 	LOG(" %i ", score);
@@ -255,6 +269,14 @@ update_status ModuleSceneIntro::Update()
 		if (lives == 1) {
 			App->renderer->Blit(l4, 236, 20, &life4);
 		}
+	}
+
+	if (defeat == true) {
+		scoreaux = score;
+		if (score > highscore) {
+			highscore = score;
+		}
+
 	}
 
 	return UPDATE_CONTINUE;
