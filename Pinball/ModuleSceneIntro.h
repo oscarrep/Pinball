@@ -127,11 +127,13 @@ public:
 	//values needed for the game
 	int ballposx,ballposy;
 	int lives=3;
+	int scoreImage;
 	int score=0;
 	int scoreaux;
 	int scorenumber;
 	int highscore = 0;
 	bool defeat = false;
+	char numbers[10];
 
 	iPoint Lflipperpos, Rflipperpos, Tflipperpos, pistonpos;
 

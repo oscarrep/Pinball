@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
+#include "ModuleFonts.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -31,6 +32,7 @@ bool ModuleSceneIntro::Start()
 	LflipperTexture = App->textures->Load("pinball/Lflipper.png");
 	RflipperTexture = App->textures->Load("pinball/Rflipper.png");
 	TopflipperTexture = App->textures->Load("pinball/Lflipper.png");
+	scoreImage = App->fonts->Load("pinball/sheet.png","1234567890", 1);
 
 	bonus_fx = App->audio->LoadFx("pinball/fx/fx-bonus.ogg");
 	flipper_fx = App->audio->LoadFx("pinball/fx/fx-flipper.ogg");
@@ -160,6 +162,8 @@ update_status ModuleSceneIntro::Update()
 
 	//App->renderer->Blit(LflipperTexture, Lflipperpos.x, Lflipperpos.y, &LflipperRect, 1.0f, Lflipper->GetRotation() );
 
+	LOG(" %i ", score);
+
 	// Flipper inputs
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
@@ -230,7 +234,9 @@ update_status ModuleSceneIntro::Update()
 		c = c->next;
 	}
 
-	
+	//Scores
+	sprintf_s(numbers, 10, "%7d", score);
+	App->fonts->BlitText(50, 50, scoreImage, numbers);
 
 	// Player death / lost ball
 	if (ballposy >= 907) {
