@@ -270,6 +270,22 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			score += 30;
 		}
 
+		if (bodyA == balls && bodyB == heartSensor1 || bodyA == heartSensor1 && bodyB == balls)
+		{
+			score += 5;
+		}
+
+		if (bodyA == balls && bodyB == heartSensor2 || bodyA == heartSensor2 && bodyB == balls)
+		{
+			score += 5;
+		}
+
+		if (bodyA == balls && bodyB == heartSensor3 || bodyA == heartSensor3 && bodyB == balls)
+		{
+			score += 5;
+		}
+
+
 		if (bodyB == heartSensor1)
 		{
 			App->audio->PlayFx(heart_fx);
@@ -323,6 +339,7 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		}
 	}
 }
+
 
 
 PhysBody* ModuleSceneIntro::SpawnBall()
