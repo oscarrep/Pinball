@@ -24,7 +24,7 @@ bool ModuleSceneIntro::Start()
 	bool ret = true;
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
-	ball = App->textures->Load("pinball/pinball_ball.png");
+	ball = App->textures->Load("pinball/ball.png");
 	rick = App->textures->Load("pinball/rick_head.png");
 	background = App->textures->Load("pinball/background2.png");
 	scorebox = App->textures->Load("pinball/scoreboard.png");
@@ -42,6 +42,10 @@ bool ModuleSceneIntro::Start()
 	heartSensor2 = App->physics->CreateCircleSensor(322, 129, 15);
 	heartSensor3 = App->physics->CreateCircleSensor(364, 129, 15);
 
+	l1 = App->textures->Load("pinball/ball.png");
+	l2 = App->textures->Load("pinball/ball.png");
+	l3 = App->textures->Load("pinball/ball.png");
+	l4 = App->textures->Load("pinball/ball.png");
 	//number sprites
 	/*n0 = App->textures->Load("pinball/0.png");
 	n1 = App->textures->Load("pinball/1.png");
@@ -98,8 +102,17 @@ bool ModuleSceneIntro::Start()
 
 	scoreboxrect.h = 110;
 	scoreboxrect.w = 270;
+
+	life1.w = 20;
+	life1.h = 20;
+	life2.w = 20;
+	life2.h = 20;
+	life3.w = 20;
+	life3.h = 20;
+	life4.w = 20;
+	life4.h = 20;
 	
-	lives = 6;
+	lives = 3;
 	
 	SpawnBall();
 
@@ -205,266 +218,21 @@ update_status ModuleSceneIntro::Update()
 	if (ballposy >= 907) {
 		PlayerDeath();
 	}
-	/*
-	while (defeat == false) {
-		
-		scoreaux = score;
-		if (score > 0) {
-			int count = 0;
-			while (score > 0) {
-				scorenumber = scoreaux % 10;
-				scoreaux = scoreaux / 10;
-				count++;
-				if (scorenumber == 0) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n0, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n0, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n0, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n0, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n0, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n0, 0, 0, &sp6);
-					}
-
-				}
-				if (scorenumber == 1) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n1, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n1, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n1, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n1, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n1, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n1, 0, 0, &sp6);
-					}
-
-				}
-				
-				if (scorenumber == 2) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n2, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n2, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n2, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n2, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n2, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n2, 0, 0, &sp6);
-					}
-				}
-				
-				if (scorenumber == 3) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n3, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n3, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n3, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n3, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n3, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n3, 0, 0, &sp6);
-					}
-				}
-				if (scorenumber == 4) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n4, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n4, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n4, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n4, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n4, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n4, 0, 0, &sp6);
-					}
-				}
-				
-				if (scorenumber == 5) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n5, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n5, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n5, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n5, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n5, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n5, 0, 0, &sp6);
-					}
-				}
-				if (scorenumber == 6) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n6, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n6, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n6, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n6, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n6, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n6, 0, 0, &sp6);
-					}
-				}
-				if (scorenumber == 7) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n7, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n7, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n7, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n7, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n7, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n7, 0, 0, &sp6);
-					}
-				}
-				if (scorenumber == 8) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n8, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n8, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n8, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n8, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n8, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n8, 0, 0, &sp6);
-					}
-				}
-				if (scorenumber == 9) {
-					while (scoreaux > 0) {
-						scoreaux = scoreaux / 10;
-						count++;
-					}
-					if (count == 1) {
-						App->renderer->Blit(n9, 0, 0, &sp1);
-					}
-					if (count == 2) {
-						App->renderer->Blit(n9, 0, 0, &sp2);
-					}
-					if (count == 3) {
-						App->renderer->Blit(n9, 0, 0, &sp3);
-					}
-					if (count == 4) {
-						App->renderer->Blit(n9, 0, 0, &sp4);
-					}
-					if (count == 5) {
-						App->renderer->Blit(n9, 0, 0, &sp5);
-					}
-					if (count == 6) {
-						App->renderer->Blit(n9, 0, 0, &sp6);
-					}
-				}
-			}
+	while (defeat != false) {
+		if (lives == 4) {
+			App->renderer->Blit(l4, 176, 20, &life4);
 		}
-
+		if (lives == 3) {
+			App->renderer->Blit(l4, 196, 20, &life4);
+		}
+		if (lives == 2) {
+			App->renderer->Blit(l4, 216, 20, &life4);
+		}
+		if (lives == 1) {
+			App->renderer->Blit(l4, 236, 20, &life4);
+		}
 	}
-*/
+
 	return UPDATE_CONTINUE;
 }
 

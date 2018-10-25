@@ -110,14 +110,12 @@ public:
 	SDL_Texture* l2;
 	SDL_Texture* l3;
 	SDL_Texture* l4;
-	SDL_Texture* l5;
-	SDL_Texture* l6;
+
 	SDL_Rect life1;
 	SDL_Rect life2;
 	SDL_Rect life3;
 	SDL_Rect life4;
-	SDL_Rect life5;
-	SDL_Rect life6;
+
 
 	//values needed for the game
 	int ballposx,ballposy;
