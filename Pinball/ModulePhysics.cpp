@@ -250,11 +250,11 @@ bool ModulePhysics::Start()
 	r_inline.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_inline, 134));
 	r_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_base, 16));
 	l_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_base, 18));
-	r_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_triangle, 8));
-	l_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_triangle, 8));
-	t_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), top_triangle, 8));
-
-
+	r_triangle=App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_triangle, 8);
+	l_triangle=App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_triangle, 8);
+	t_triangle=App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), top_triangle, 8);
+	r_triangle->body->GetFixtureList()->SetRestitution(2.0f);
+	l_triangle->body->GetFixtureList()->SetRestitution(2.0f);
 
 
 

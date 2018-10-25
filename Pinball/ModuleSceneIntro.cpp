@@ -58,10 +58,10 @@ bool ModuleSceneIntro::Start()
 	n1 = App->textures->Load("pinball/8.png");
 	n1 = App->textures->Load("pinball/9.png");*/
 
-	App->physics->CreateLFlipper();
-	App->physics->CreateRFlipper();
-	App->physics->CreateUpperFlipper();
-	App->physics->CreatePiston();
+	/*Lflipper->body = */App->physics->CreateLFlipper();
+	/*Rflipper->body = */App->physics->CreateRFlipper();
+	/*Tflipper->body = */App->physics->CreateUpperFlipper();
+	/*pistonBody->body = */App->physics->CreatePiston();
 
 	bumper1 = App->physics->CreateCircleStatic(295, 220, 25);
 	bumperSensor1 = App->physics->CreateCircleSensor(295, 220, 25);
@@ -112,6 +112,22 @@ bool ModuleSceneIntro::Start()
 	life4.w = 20;
 	life4.h = 20;
 	
+	LflipperRect.w = 81;
+	LflipperRect.h = 23;
+	LflipperRect.x = 0;
+	LflipperRect.y = 0;
+	
+	RflipperRect.w = 81;
+	RflipperRect.h = 23;
+	RflipperRect.x = 0;
+	RflipperRect.y = 0;
+
+	TflipperRect.w = 81;
+	TflipperRect.h = 23;
+	TflipperRect.x = 0;
+	TflipperRect.y = 0;
+
+
 	lives = 3;
 	
 	SpawnBall();
@@ -133,22 +149,16 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update()
 {
 	balls->GetPosition(ballposx, ballposy);
-	SDL_Rect ballposition;
-	ballposition.w = 15;
-	ballposition.h = 15;
-	ballposition.x = ballposx;
-	ballposition.y = ballposy;
+	SDL_Rect ballrect;
+	ballrect.w = 27;
+	ballrect.h = 27;
+	ballrect.x = 1;
+	ballrect.y = 0;
 	App->renderer->Blit(background, 0, 0, &backgroundrect);
 	App->renderer->Blit(scorebox, 0, 0 , &scoreboxrect);
-	App->renderer->Blit(ball, ballposx, ballposy, &ballposition);
-	//App->renderer->Blit(background, App->player->LflipperPos.x, App->player->LflipperPos.x, &LflipperRect, 1.0f, App->physics->Lflipper->GetRotation());
-	
-	// Debug spawn ball
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-	{
-		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 13));
-		circles.getLast()->data->listener = this;
-	}
+	App->renderer->Blit(ball, ballposx, ballposy, &ballrect);
+
+	//App->renderer->Blit(LflipperTexture, Lflipperpos.x, Lflipperpos.y, &LflipperRect, 1.0f, Lflipper->GetRotation() );
 
 	// Flipper inputs
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
@@ -241,6 +251,20 @@ update_status ModuleSceneIntro::Update()
 		}
 	}
 
+	return UPDATE_CONTINUE;
+}
+
+update_status ModuleSceneIntro::PostUpdate()
+{
+	// Debug spawn ball
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && !joint)
+	{
+		/*circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 13));
+		circles.getLast()->data->listener = this;*/
+		App->physics->world->DestroyBody(balls->body);
+		balls = App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 13);
+	}
+	
 	return UPDATE_CONTINUE;
 }
 

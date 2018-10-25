@@ -14,6 +14,7 @@ public:
 
 	bool Start();
 	update_status Update();
+	update_status PostUpdate();
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 	PhysBody* SpawnBall();
@@ -33,9 +34,10 @@ public:
 
 
 	//elements
-	//PhysBody* Lflipper;
-	//PhysBody* Rflipper;
-	//PhysBody* UpperFlipper;
+	PhysBody* Lflipper;
+	PhysBody* Rflipper;
+	PhysBody* Tflipper;
+	PhysBody* pistonBody;
 	PhysBody* balls;
 	PhysBody* lefttribump;
 	PhysBody* righttribump;
@@ -131,6 +133,7 @@ public:
 	int highscore = 0;
 	bool defeat = false;
 
+	iPoint Lflipperpos, Rflipperpos, Tflipperpos, pistonpos;
 
 	uint flipper_fx;
 	uint heart_fx;
@@ -145,4 +148,5 @@ public:
 	bool bumper_fx3 = false;
 	bool bumper_fx4 = false;
 	bool bumper_fx5 = false;
+	bool joint = false;
 };
