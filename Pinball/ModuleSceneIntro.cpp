@@ -164,9 +164,9 @@ update_status ModuleSceneIntro::Update()
 	App->renderer->Blit(scorebox, 0, 0 , &scoreboxrect);
 	App->renderer->Blit(ball, ballposx, ballposy, &ballrect);
 
-	/*Lflipper->GetPosition(lx,ly);
-	App->renderer->Blit(LflipperTexture, lx, ly, NULL, 1.0F, Lflipper->GetRotation());
-	Tflipper->GetPosition(tx, ty);
+	left = Lflipper->GetPosition(left.x,left.y);
+	App->renderer->Blit(LflipperTexture, left.x, left.y, NULL, 1.0F, Lflipper->GetRotation());
+	fbody2->GetPosition(tx, ty);
 	App->renderer->Blit(TopflipperTexture, tx, ty, NULL, 1.0F, Tflipper->GetRotation());
 	Rflipper->GetPosition(rx, ry);
 	App->renderer->Blit(RflipperTexture, rx, ry, NULL, 1.0F, Rflipper->GetRotation());
