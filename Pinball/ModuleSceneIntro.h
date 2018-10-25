@@ -24,6 +24,7 @@ public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> triangles;
+	//p2List<PhysBody*> balls;
 	////p2List<PhysBody*>* Lflipper;
 	////p2List<PhysBody*>* Rflipper;
 	//PhysBody* sensor;

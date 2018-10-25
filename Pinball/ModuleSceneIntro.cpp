@@ -125,23 +125,16 @@ bool ModuleSceneIntro::Start()
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
-
+	
 	return true;
 }
 
 // Update: draw background
 update_status ModuleSceneIntro::Update()
 {
-	balls->GetPosition(ballposx,ballposy);
-	SDL_Rect ballposition;
-	ballposition.w = 15;
-	ballposition.h = 15;
-	ballposition.x = ballposx;
-	ballposition.y = ballposy;
-
 	App->renderer->Blit(background, 0, 0, &backgroundrect);
 	App->renderer->Blit(scorebox, 0, 0 , &scoreboxrect);
-	App->renderer->Blit(ball, ballposx, ballposy, &ballposition);
+	//App->renderer->Blit(ball, ballposx, ballposy, &balls);
 	//App->renderer->Blit(LflipperTexture, , , &Lflipper);
 	//App->renderer->Blit(background, , , &Rflipper);
 	
@@ -213,6 +206,16 @@ update_status ModuleSceneIntro::Update()
 		App->renderer->Blit(box, x, y, NULL, 1.0f, c->data->GetRotation());
 		c = c->next;
 	}
+
+	while (c != NULL)
+	{
+		int x, y;
+		c->data->GetPosition(x, y);
+		App->renderer->Blit(ball, x, y, NULL, 1.0f, c->data->GetRotation());
+		c = c->next;
+	}
+
+	
 
 	// Player death / lost ball
 	if (ballposy >= 907) {
@@ -289,7 +292,7 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		if (bodyB == heartSensor1)
 		{
 			App->audio->PlayFx(heart_fx);
-			if (heart1 = false)
+			if (heart1 == false)
 			{
 				heart1 = true;
 			}
@@ -298,7 +301,7 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		if (bodyB == heartSensor2)
 		{
 			App->audio->PlayFx(heart_fx);
-			if (heart2 = false)
+			if (heart2 == false)
 			{
 				heart2 = true;
 			}
@@ -307,10 +310,17 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		if (bodyB == heartSensor3)
 		{
 			App->audio->PlayFx(heart_fx);
-			if (heart3 = false)
+			if (heart3 == false)
 			{
 				heart3 = true;
 			}
+		}
+
+		if (heart1 == true && heart2 == true && heart3 == true) {
+			lives += 1;
+			heart1 == false;
+			heart2 == false;
+			heart3 == false;
 		}
 
 		if (bodyB == bumperSensor1)
@@ -341,10 +351,11 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 }
 
 
-
 PhysBody* ModuleSceneIntro::SpawnBall()
 {
 	balls = App->physics->CreateCircle(44, 791, 13);
+	balls->listener = this;
+	/*balls = App->physics->CreateCircle(44, 791, 13);*/
 	return balls;
 }
 
