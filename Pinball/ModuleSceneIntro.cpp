@@ -56,6 +56,18 @@ bool ModuleSceneIntro::Start()
 
 	pond = App->physics->CreateCircleStatic(204, 449, 25);
 
+	tree = App->physics->CreateCircleStatic(430, 127, 25);
+	tree->body->GetFixtureList()->SetDensity(10.0f);
+	tree->body->GetFixtureList()->SetRestitution(1.5f);
+
+	Leftboost = App->physics->CreateRectangleStatic(105, 850, 30, 8);
+	Leftboost->body->GetFixtureList()->SetDensity(15.0f);
+	Leftboost->body->GetFixtureList()->SetRestitution(1.5f);
+
+	Rightboost = App->physics->CreateRectangleStatic(537, 850, 30, 8);
+	Rightboost->body->GetFixtureList()->SetDensity(15.0f);
+	Rightboost->body->GetFixtureList()->SetRestitution(1.5f);
+
 	backgroundrect.h = 907;
 	backgroundrect.w = 609;
 
@@ -98,7 +110,7 @@ update_status ModuleSceneIntro::Update()
 	// Debug spawn ball
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
-		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 15));
+		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 13));
 		circles.getLast()->data->listener = this;
 	}
 
@@ -205,7 +217,7 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 PhysBody* ModuleSceneIntro::SpawnBall()
 {
-	balls = App->physics->CreateCircle(44, 791, 15);
+	balls = App->physics->CreateCircle(44, 791, 13);
 	return balls;
 }
 

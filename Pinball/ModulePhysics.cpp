@@ -131,34 +131,74 @@ bool ModulePhysics::Start()
 		261, 903
 	};
 
-	int right_inline[54] = {
-		446, 434,
-		491, 457,
-		537, 386,
-		557, 324,
-		560, 271,
-		554, 213,
-		528, 165,
-		505, 127,
-		464, 85,
-		433, 67,
-		410, 60,
-		395, 71,
-		381, 98,
-		384, 117,
-		385, 146,
-		398, 161,
-		424, 168,
-		453, 177,
-		470, 183,
-		482, 202,
-		474, 248,
-		459, 295,
-		425, 351,
-		390, 387,
-		399, 393,
-		407, 403,
-		447, 434
+	int right_inline[134] = {
+		400, 60,
+		397, 74,
+		386, 88,
+		382, 101,
+		382, 113,
+		384, 135,
+		386, 154,
+		397, 164,
+		417, 169,
+		439, 177,
+		457, 182,
+		468, 186,
+		477, 191,
+		477, 239,
+		464, 286,
+		446, 324,
+		419, 358,
+		394, 384,
+		405, 391,
+		410, 403,
+		461, 328,
+		474, 297,
+		483, 261,
+		487, 227,
+		488, 199,
+		484, 180,
+		445, 171,
+		413, 159,
+		408, 148,
+		395, 138,
+		392, 119,
+		396, 102,
+		401, 84,
+		413, 82,
+		418, 71,
+		444, 77,
+		466, 93,
+		486, 110,
+		504, 131,
+		521, 156,
+		535, 182,
+		544, 210,
+		553, 235,
+		554, 262,
+		555, 288,
+		552, 318,
+		544, 347,
+		533, 374,
+		523, 395,
+		509, 418,
+		500, 437,
+		488, 455,
+		496, 462,
+		511, 439,
+		524, 415,
+		537, 394,
+		548, 373,
+		556, 346,
+		565, 300,
+		566, 264,
+		562, 227,
+		549, 191,
+		532, 153,
+		506, 117,
+		462, 77,
+		433, 60,
+		412, 53
 	};
 
 	int left_base[18] = {
@@ -207,7 +247,7 @@ bool ModulePhysics::Start()
 	};
 
 	out.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), outline, 186));
-	r_inline.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_inline, 54));
+	r_inline.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_inline, 134));
 	r_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_base, 16));
 	l_base.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), left_base, 18));
 	r_triangle.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), right_triangle, 8));
@@ -351,12 +391,6 @@ PhysBody* ModulePhysics::CreateRectangleStatic(int x, int y, int width, int heig
 
 	return pbody;
 }
-
-
-/*PhysBody* ModulePhysics::CreatePiston()
-{
-return piston;
-}*/
 
 PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height, Module *listener)
 {
@@ -561,7 +595,7 @@ b2Body* ModulePhysics::CreatePiston() {
 
 	b2FixtureDef flipperFixture4;
 	flipperFixture4.shape = &box4;
-	flipperFixture4.density = 2;
+	flipperFixture4.density = 0;
 	fbody4->CreateFixture(&flipperFixture4);
 
 	b2BodyDef quad;

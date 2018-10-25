@@ -42,7 +42,10 @@ public:
 	PhysBody* bumper2;
 	PhysBody* bumper3;
 	PhysBody* bumper4;
+	PhysBody* tree;
 	PhysBody* pond;
+	PhysBody* Leftboost;
+	PhysBody* Rightboost;
 
 	//contour
 	p2List<PhysBody*> out;
