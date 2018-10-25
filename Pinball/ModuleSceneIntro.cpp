@@ -32,7 +32,7 @@ bool ModuleSceneIntro::Start()
 	LflipperTexture = App->textures->Load("pinball/Lflipper.png");
 	RflipperTexture = App->textures->Load("pinball/Rflipper.png");
 	TopflipperTexture = App->textures->Load("pinball/Lflipper.png");
-	scoreImage = App->fonts->Load("pinball/sheet.png","1234567890", 1);
+	scoreImage = App->fonts->Load("pinball/numbers.png","1234567890", 1);
 
 	bonus_fx = App->audio->LoadFx("pinball/fx/fx-bonus.ogg");
 	flipper_fx = App->audio->LoadFx("pinball/fx/fx-flipper.ogg");
@@ -236,7 +236,7 @@ update_status ModuleSceneIntro::Update()
 
 	//Scores
 	sprintf_s(numbers, 10, "%7d", score);
-	App->fonts->BlitText(50, 50, scoreImage, numbers);
+	App->fonts->BlitText(150, 55, scoreImage, numbers);
 
 	// Player death / lost ball
 	if (ballposy >= 907) {
