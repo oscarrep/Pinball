@@ -69,17 +69,53 @@ public:
 	SDL_Texture* TopflipperTexture;
 	SDL_Rect backgroundrect;
 	SDL_Rect scoreboxrect;
+
 	//handout elements
 	SDL_Texture* circle;
 	SDL_Texture* box;
 	SDL_Texture* rick;
 	//
 
+	//score textures
+	/*SDL_Texture* n0;
+	SDL_Texture* n1;
+	SDL_Texture* n2;
+	SDL_Texture* n3;
+	SDL_Texture* n4;
+	SDL_Texture* n5;
+	SDL_Texture* n6;
+	SDL_Texture* n7;
+	SDL_Texture* n8;
+	SDL_Texture* n9;
+	SDL_Rect sp1;
+	SDL_Rect sp2;
+	SDL_Rect sp3;
+	SDL_Rect sp4;
+	SDL_Rect sp5;
+	SDL_Rect sp6;*/
+
+
+	//lives textures
+	SDL_Texture* l1;
+	SDL_Texture* l2;
+	SDL_Texture* l3;
+	SDL_Texture* l4;
+	SDL_Texture* l5;
+	SDL_Texture* l6;
+	SDL_Rect life1;
+	SDL_Rect life2;
+	SDL_Rect life3;
+	SDL_Rect life4;
+	SDL_Rect life5;
+	SDL_Rect life6;
+
 	//values needed for the game
 	int ballposx,ballposy;
 	int lflipposx, lflipposy;
 	int lives=3;
 	int score=0;
+	int scoreaux;
+	int scorenumber;
 	int highscore = 0;
 	bool defeat = false;
 

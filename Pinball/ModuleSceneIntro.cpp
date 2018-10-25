@@ -33,6 +33,18 @@ bool ModuleSceneIntro::Start()
 	RflipperTexture = App->textures->Load("pinball/Rflipper.png");
 	TopflipperTexture = App->textures->Load("pinball/Lflipper.png");
 
+	//number sprites
+	/*n0 = App->textures->Load("pinball/0.png");
+	n1 = App->textures->Load("pinball/1.png");
+	n1 = App->textures->Load("pinball/2.png");
+	n1 = App->textures->Load("pinball/3.png");
+	n1 = App->textures->Load("pinball/4.png");
+	n1 = App->textures->Load("pinball/5.png");
+	n1 = App->textures->Load("pinball/6.png");
+	n1 = App->textures->Load("pinball/7.png");
+	n1 = App->textures->Load("pinball/8.png");
+	n1 = App->textures->Load("pinball/9.png");*/
+
 	App->physics->CreateLFlipper();
 	App->physics->CreateRFlipper();
 	App->physics->CreateUpperFlipper();
@@ -178,7 +190,266 @@ update_status ModuleSceneIntro::Update()
 	if (ballposy >= 907) {
 		PlayerDeath();
 	}
+	/*
+	while (defeat == false) {
+		
+		scoreaux = score;
+		if (score > 0) {
+			int count = 0;
+			while (score > 0) {
+				scorenumber = scoreaux % 10;
+				scoreaux = scoreaux / 10;
+				count++;
+				if (scorenumber == 0) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n0, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n0, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n0, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n0, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n0, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n0, 0, 0, &sp6);
+					}
 
+				}
+				if (scorenumber == 1) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n1, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n1, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n1, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n1, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n1, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n1, 0, 0, &sp6);
+					}
+
+				}
+				
+				if (scorenumber == 2) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n2, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n2, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n2, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n2, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n2, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n2, 0, 0, &sp6);
+					}
+				}
+				
+				if (scorenumber == 3) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n3, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n3, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n3, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n3, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n3, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n3, 0, 0, &sp6);
+					}
+				}
+				if (scorenumber == 4) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n4, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n4, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n4, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n4, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n4, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n4, 0, 0, &sp6);
+					}
+				}
+				
+				if (scorenumber == 5) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n5, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n5, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n5, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n5, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n5, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n5, 0, 0, &sp6);
+					}
+				}
+				if (scorenumber == 6) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n6, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n6, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n6, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n6, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n6, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n6, 0, 0, &sp6);
+					}
+				}
+				if (scorenumber == 7) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n7, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n7, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n7, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n7, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n7, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n7, 0, 0, &sp6);
+					}
+				}
+				if (scorenumber == 8) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n8, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n8, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n8, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n8, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n8, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n8, 0, 0, &sp6);
+					}
+				}
+				if (scorenumber == 9) {
+					while (scoreaux > 0) {
+						scoreaux = scoreaux / 10;
+						count++;
+					}
+					if (count == 1) {
+						App->renderer->Blit(n9, 0, 0, &sp1);
+					}
+					if (count == 2) {
+						App->renderer->Blit(n9, 0, 0, &sp2);
+					}
+					if (count == 3) {
+						App->renderer->Blit(n9, 0, 0, &sp3);
+					}
+					if (count == 4) {
+						App->renderer->Blit(n9, 0, 0, &sp4);
+					}
+					if (count == 5) {
+						App->renderer->Blit(n9, 0, 0, &sp5);
+					}
+					if (count == 6) {
+						App->renderer->Blit(n9, 0, 0, &sp6);
+					}
+				}
+			}
+		}
+
+	}
+*/
 	return UPDATE_CONTINUE;
 }
 
@@ -208,6 +479,12 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		{
 			App->audio->PlayFx(bonus_fx);
 			score += 10;
+		}
+
+		if (bodyA == balls && bodyB == tree || bodyA == tree && bodyB == balls)
+		{
+			App->audio->PlayFx(bonus_fx);
+			score += 30;
 		}
 
 	}
