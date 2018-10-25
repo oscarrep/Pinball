@@ -36,6 +36,8 @@ bool ModuleSceneIntro::Start()
 	flipper_fx = App->audio->LoadFx("pinball/fx/fx-flipper.ogg");
 	heart_fx = App->audio->LoadFx("pinball/fx/fx-heart.ogg");
 
+	bgm = App->audio->PlayMusic("pinball/fx/track.ogg");
+
 	heartSensor1 = App->physics->CreateCircleSensor(279, 129, 15);
 	heartSensor2 = App->physics->CreateCircleSensor(322, 129, 15);
 	heartSensor3 = App->physics->CreateCircleSensor(364, 129, 15);

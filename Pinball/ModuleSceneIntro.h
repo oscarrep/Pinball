@@ -128,6 +128,7 @@ public:
 	uint flipper_fx;
 	uint heart_fx;
 	uint bonus_fx;
+	uint bgm;
 
 	bool heart1 = false;
 	bool heart2 = false;
